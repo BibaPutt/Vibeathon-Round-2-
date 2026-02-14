@@ -1,0 +1,273 @@
+import { createContext, useContext } from "react";
+import type { GameStore, GameAction, Player, GameConfig } from "./types";
+
+// === Default State ===
+function createDefaultPlayer(id: string): Player {
+    return {
+        id,
+        username: `VB-${id}`,
+        status: "idle",
+        difficulty: null,
+        language: null,
+        points: 0,
+        assignedProblemId: null,
+        completionTime: null,
+        startTime: null,
+        dragsRemaining: 0,
+        totalDrags: 0,
+        inCooldown: false,
+        cooldownEnd: null,
+    };
+}
+
+function createDefaultPlayers(): Player[] {
+    const players: Player[] = [];
+    for (let i = 1; i <= 20; i++) {
+        players.push(createDefaultPlayer(String(i).padStart(3, "0")));
+    }
+    return players;
+}
+
+const defaultConfig: GameConfig = {
+    timerDurationSec: 600, // 10 minutes
+    roundActive: false,
+    roundStartTime: null,
+    qualifyCount: 10, // top 10 qualify by default
+};
+
+export const defaultStore: GameStore = {
+    players: createDefaultPlayers(),
+    config: defaultConfig,
+    currentPlayerId: null,
+    isAdmin: false,
+};
+
+// === Reducer ===
+export function gameReducer(state: GameStore, action: GameAction): GameStore {
+    switch (action.type) {
+        case "LOGIN_PLAYER": {
+            return { ...state, currentPlayerId: action.playerId, isAdmin: false };
+        }
+        case "LOGIN_ADMIN": {
+            return { ...state, currentPlayerId: null, isAdmin: true };
+        }
+        case "LOGOUT": {
+            return { ...state, currentPlayerId: null, isAdmin: false };
+        }
+        case "ADD_PLAYER": {
+            const exists = state.players.find((p) => p.id === action.id);
+            if (exists) return state;
+            return {
+                ...state,
+                players: [...state.players, createDefaultPlayer(action.id)],
+            };
+        }
+        case "SELECT_DIFFICULTY": {
+            return {
+                ...state,
+                players: state.players.map((p) =>
+                    p.id === action.playerId
+                        ? { ...p, difficulty: action.difficulty, status: "selecting" as const }
+                        : p
+                ),
+            };
+        }
+        case "SELECT_LANGUAGE": {
+            return {
+                ...state,
+                players: state.players.map((p) =>
+                    p.id === action.playerId
+                        ? { ...p, language: action.language }
+                        : p
+                ),
+            };
+        }
+        case "ASSIGN_PROBLEM": {
+            return {
+                ...state,
+                players: state.players.map((p) =>
+                    p.id === action.playerId
+                        ? {
+                            ...p,
+                            assignedProblemId: action.problemId,
+                            dragsRemaining: action.allowedMoves,
+                            totalDrags: action.allowedMoves,
+                        }
+                        : p
+                ),
+            };
+        }
+        case "START_PLAYING": {
+            return {
+                ...state,
+                players: state.players.map((p) =>
+                    p.id === action.playerId
+                        ? { ...p, status: "playing" as const, startTime: Date.now() }
+                        : p
+                ),
+            };
+        }
+        case "USE_DRAG": {
+            return {
+                ...state,
+                players: state.players.map((p) =>
+                    p.id === action.playerId
+                        ? { ...p, dragsRemaining: Math.max(0, p.dragsRemaining - 1) }
+                        : p
+                ),
+            };
+        }
+        case "START_COOLDOWN": {
+            return {
+                ...state,
+                players: state.players.map((p) =>
+                    p.id === action.playerId
+                        ? { ...p, inCooldown: true, cooldownEnd: action.cooldownEnd }
+                        : p
+                ),
+            };
+        }
+        case "END_COOLDOWN": {
+            return {
+                ...state,
+                players: state.players.map((p) =>
+                    p.id === action.playerId
+                        ? {
+                            ...p,
+                            inCooldown: false,
+                            cooldownEnd: null,
+                            dragsRemaining: p.totalDrags, // reset drags after cooldown
+                        }
+                        : p
+                ),
+            };
+        }
+        case "COMMIT_SOLUTION": {
+            return {
+                ...state,
+                players: state.players.map((p) =>
+                    p.id === action.playerId
+                        ? {
+                            ...p,
+                            status: "completed" as const,
+                            completionTime: action.completionTime,
+                            points: action.points,
+                        }
+                        : p
+                ),
+            };
+        }
+        case "ELIMINATE_PLAYER": {
+            return {
+                ...state,
+                players: state.players.map((p) =>
+                    p.id === action.playerId
+                        ? { ...p, status: "eliminated" as const }
+                        : p
+                ),
+            };
+        }
+        case "RESET_PLAYER": {
+            return {
+                ...state,
+                players: state.players.map((p) =>
+                    p.id === action.playerId ? createDefaultPlayer(p.id) : p
+                ),
+            };
+        }
+        case "RESET_ALL": {
+            return {
+                ...state,
+                players: state.players.map((p) => createDefaultPlayer(p.id)),
+            };
+        }
+        case "RESET_EVERYTHING": {
+            return {
+                ...defaultStore,
+                players: createDefaultPlayers(),
+            };
+        }
+        case "EXTEND_TIME": {
+            return {
+                ...state,
+                config: {
+                    ...state.config,
+                    timerDurationSec: state.config.timerDurationSec + action.extraSeconds,
+                },
+            };
+        }
+        case "START_ROUND": {
+            return {
+                ...state,
+                config: {
+                    ...state.config,
+                    roundActive: true,
+                    roundStartTime: Date.now(),
+                },
+            };
+        }
+        case "END_ROUND": {
+            return {
+                ...state,
+                config: {
+                    ...state.config,
+                    roundActive: false,
+                },
+            };
+        }
+        case "SET_QUALIFY_COUNT": {
+            return {
+                ...state,
+                config: { ...state.config, qualifyCount: action.count },
+            };
+        }
+        case "SET_STATE": {
+            return action.state;
+        }
+        default:
+            return state;
+    }
+}
+
+// === LocalStorage Persistence ===
+const STORAGE_KEY = "vibeathon_game_store";
+
+export function loadStore(): GameStore {
+    try {
+        const saved = localStorage.getItem(STORAGE_KEY);
+        if (saved) {
+            const parsed = JSON.parse(saved) as GameStore;
+            // Merge with defaults to handle schema evolution
+            return {
+                ...defaultStore,
+                ...parsed,
+                config: { ...defaultConfig, ...parsed.config },
+            };
+        }
+    } catch {
+        // corrupted data, reset
+    }
+    return defaultStore;
+}
+
+export function saveStore(state: GameStore) {
+    try {
+        localStorage.setItem(STORAGE_KEY, JSON.stringify(state));
+    } catch {
+        // storage full or unavailable
+    }
+}
+
+// === Context ===
+export interface GameContextType {
+    state: GameStore;
+    dispatch: React.Dispatch<GameAction>;
+}
+
+export const GameContext = createContext<GameContextType | null>(null);
+
+export function useGameStore(): GameContextType {
+    const ctx = useContext(GameContext);
+    if (!ctx) throw new Error("useGameStore must be used within GameStoreProvider");
+    return ctx;
+}

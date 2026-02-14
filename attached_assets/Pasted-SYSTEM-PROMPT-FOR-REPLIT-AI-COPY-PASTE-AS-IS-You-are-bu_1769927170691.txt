@@ -1,0 +1,266 @@
+SYSTEM PROMPT FOR REPLIT AI (COPY–PASTE AS IS):
+
+You are building a production-ready web application for a college tech competition called VIBEATHON – Round 2: Logic Lock.
+
+This is a high-stakes elimination round, not a tutorial platform.
+
+1️⃣ CORE GAME OBJECTIVE
+
+Players must solve a coding logic challenge by arranging shuffled code blocks using drag-and-drop.
+
+Only the correct blocks in the correct order result in success.
+
+Any imposter block or wrong order results in failure.
+
+2️⃣ VISUAL THEME & UX (MANDATORY)
+
+Design the UI inspired by Squid Game × Stranger Things:
+
+Dark background (black / deep blue)
+
+Red neon accents
+
+Retro-digital countdown fonts
+
+Glitch / flicker effects for tension
+
+Minimal hints, high pressure
+
+This must feel like a survival game, not a learning app.
+
+3️⃣ ROLES & ACCESS CONTROL
+
+Implement three strictly separated roles:
+
+👤 Player
+👨‍⚖️ Judge
+👑 Admin
+
+No role can access another role’s privileges.
+
+4️⃣ PLAYER ID SYSTEM (MANDATORY)
+
+Each player must enter a Player ID before starting.
+
+Format: VB-R2-###
+
+Player ID is:
+
+Locked after entry
+
+Visible on screen at all times
+
+Refreshing the page must NOT reset Player ID or game state.
+
+Player ID must track:
+
+Language chosen
+
+Difficulty chosen
+
+Drag usage
+
+Cooldowns
+
+Run count
+
+Time remaining
+
+Final status (Playing / Qualified / Eliminated)
+
+5️⃣ JUDGE ID SYSTEM
+
+Judges log in using JUDGE-##
+
+Judges see a read-only live dashboard
+
+Judge dashboard must show:
+
+| Player ID | Language | Difficulty | Drags Left | Time Left | Runs Used | Status |
+
+Status colors:
+
+🟢 Playing
+
+🟡 Cooldown
+
+🔴 Eliminated
+
+🟣 Qualified
+
+Judges must NEVER see:
+
+Correct solution
+
+Code correctness details
+
+6️⃣ ADMIN ID SYSTEM (NO LOOPHOLES)
+
+Admin logs in using ADMIN-01.
+
+Admin abilities:
+
+Add / edit / delete coding problems
+
+Add / remove code blocks
+
+Mark blocks as correct or imposter
+
+Reorder correct blocks (admin-side only)
+
+Enable or disable problems
+
+Select the active problem for the round
+
+Start / end round
+
+Lock all player screens
+
+Once a round starts:
+
+Admin CANNOT modify code blocks
+
+Admin CANNOT modify drag limits
+
+7️⃣ CODE & BLOCK MANAGEMENT
+
+Each problem must include:
+
+Language (Python / Java / C++)
+
+Difficulty (Easy / Medium / Hard)
+
+Correct code blocks (ordered)
+
+Imposter code blocks
+
+Players must see:
+
+Only shuffled blocks
+
+No indication of correct vs imposter
+
+8️⃣ GAME LAYOUT
+Left Panel: DROP ZONE
+
+Empty area where players place chosen blocks
+
+Only this area is evaluated
+
+Right Panel: CODE POOL
+
+All shuffled blocks (correct + imposter)
+
+9️⃣ DYNAMIC DRAG LIMIT SYSTEM (CRITICAL)
+
+Drag limit must be calculated automatically:
+
+Base Drags = (Number of Correct Code Blocks × 2)
+
+
+Difficulty bonus:
+
+Easy → +2
+
+Medium → +5
+
+Hard → +8
+
+Total Drags = Base Drags + Difficulty Bonus
+
+
+Each drag reduces count
+
+When drags reach 0:
+
+Dragging is disabled
+
+Each extra drag attempt triggers a 10-second cooldown
+
+🔟 RUN SYSTEM
+
+Players can click Run ▶
+
+Constraints:
+
+Max 3 runs per minute
+
+Each run has a 30-second execution timeout
+
+Run silently checks logic correctness
+
+No hints or partial feedback
+
+1️⃣1️⃣ SUBMIT SYSTEM
+
+Submit enabled only after at least one Run
+
+On submit:
+
+Correct → QUALIFIED
+
+Incorrect → ELIMINATED
+
+After submit:
+
+UI locked permanently
+
+1️⃣2️⃣ TIMER & ELIMINATION
+
+Global round timer (e.g., 3 minutes)
+
+Timer always visible
+
+When timer ends:
+
+Player is eliminated
+
+Screen locks
+
+1️⃣3️⃣ SECURITY & ANTI-CHEAT
+
+Language & difficulty locked after selection
+
+Page refresh does NOT reset state
+
+No undo after submit
+
+No access to other players’ data
+
+Judge dashboard is read-only
+
+1️⃣4️⃣ VISUAL STATES
+
+QUALIFIED:
+
+Green glow
+
+Calm animation
+
+ELIMINATED:
+
+Red overlay
+
+UI disabled
+
+1️⃣5️⃣ TECHNICAL REQUIREMENTS
+
+Frontend must be modular and readable
+
+Use drag-and-drop
+
+Maintain persistent state (local storage or backend)
+
+Must be deployable directly from Replit
+
+⚠️ ABSOLUTE RULES (NO EXCEPTIONS)
+
+Do NOT expose correct solution
+
+Do NOT give hints
+
+Do NOT allow retries after submission
+
+Do NOT simplify rules
+
+Build the complete, fully working system exactly as described above.

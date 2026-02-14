@@ -1,0 +1,2262 @@
+{
+    "problems": [
+        {
+            "id": "py_01",
+            "language": "Python",
+            "difficulty": "Easy",
+            "task": "Create a function named 'say_hello' that prints a message, and call it from the 'main' function.",
+            "allowed_moves": 5,
+            "code_chunks": [
+                {
+                    "id": "c1",
+                    "content": "def say_hello():\n    message = \"Hello from the function!\"",
+                    "is_distractor": false
+                },
+                {
+                    "id": "c2",
+                    "content": "    print(message)\n\ndef main():",
+                    "is_distractor": false
+                },
+                {
+                    "id": "c3",
+                    "content": "    say_hello()\n\nmain()",
+                    "is_distractor": false
+                },
+                {
+                    "id": "d1",
+                    "content": "def say_hello(msg):\n    print(\"Hello\")",
+                    "is_distractor": true
+                },
+                {
+                    "id": "d2",
+                    "content": "    return message\n\nif __name__ == \"__main__\":",
+                    "is_distractor": true
+                }
+            ],
+            "solution_order": [
+                "c1",
+                "c2",
+                "c3"
+            ]
+        },
+        {
+            "id": "py_02",
+            "language": "Python",
+            "difficulty": "Easy",
+            "task": "Write a function 'add' that takes two arguments and returns their sum. Display the result in 'main'.",
+            "allowed_moves": 6,
+            "code_chunks": [
+                {
+                    "id": "c1",
+                    "content": "def add(a, b):\n    result = a + b\n    return result",
+                    "is_distractor": false
+                },
+                {
+                    "id": "c2",
+                    "content": "def main():\n    x = 10\n    y = 5",
+                    "is_distractor": false
+                },
+                {
+                    "id": "c3",
+                    "content": "    sum_value = add(x, y)\n    print(\"The sum is:\", sum_value)",
+                    "is_distractor": false
+                },
+                {
+                    "id": "c4",
+                    "content": "main()",
+                    "is_distractor": false
+                },
+                {
+                    "id": "d1",
+                    "content": "def add(a, b):\n    print(a + b)",
+                    "is_distractor": true
+                },
+                {
+                    "id": "d2",
+                    "content": "    sum_value = x + y\n    return sum_value",
+                    "is_distractor": true
+                }
+            ],
+            "solution_order": [
+                "c1",
+                "c2",
+                "c3",
+                "c4"
+            ]
+        },
+        {
+            "id": "py_03",
+            "language": "Python",
+            "difficulty": "Easy",
+            "task": "Implement a switch-case logic using if-elif-else statements to handle a 'choice' variable.",
+            "allowed_moves": 6,
+            "code_chunks": [
+                {
+                    "id": "c1",
+                    "content": "def main():\n    choice = 2\n    if choice == 1:",
+                    "is_distractor": false
+                },
+                {
+                    "id": "c2",
+                    "content": "        print(\"You chose Option 1.\")\n    elif choice == 2:\n        print(\"You chose Option 2.\")",
+                    "is_distractor": false
+                },
+                {
+                    "id": "c3",
+                    "content": "    else:\n        print(\"Invalid choice.\")",
+                    "is_distractor": false
+                },
+                {
+                    "id": "c4",
+                    "content": "main()",
+                    "is_distractor": false
+                },
+                {
+                    "id": "d1",
+                    "content": "    switch(choice):\n        case 1:",
+                    "is_distractor": true
+                },
+                {
+                    "id": "d2",
+                    "content": "    default:\n        print(\"Error\")",
+                    "is_distractor": true
+                }
+            ],
+            "solution_order": [
+                "c1",
+                "c2",
+                "c3",
+                "c4"
+            ]
+        },
+        {
+            "id": "py_04",
+            "language": "Python",
+            "difficulty": "Easy",
+            "task": "Use a 'for' loop to print numbers from 1 to 5.",
+            "allowed_moves": 5,
+            "code_chunks": [
+                {
+                    "id": "c1",
+                    "content": "def main():\n    for i in range(1, 6):",
+                    "is_distractor": false
+                },
+                {
+                    "id": "c2",
+                    "content": "        print(\"Number:\", i)\n\nmain()",
+                    "is_distractor": false
+                },
+                {
+                    "id": "d1",
+                    "content": "    for i in range(5):\n        print(i)",
+                    "is_distractor": true
+                },
+                {
+                    "id": "d2",
+                    "content": "    while i < 6:\n        i++",
+                    "is_distractor": true
+                }
+            ],
+            "solution_order": [
+                "c1",
+                "c2"
+            ]
+        },
+        {
+            "id": "py_05",
+            "language": "Python",
+            "difficulty": "Easy",
+            "task": "Create a 'while' loop that runs as long as 'i' is less than 3.",
+            "allowed_moves": 5,
+            "code_chunks": [
+                {
+                    "id": "c1",
+                    "content": "def main():\n    i = 0\n    while i < 3:",
+                    "is_distractor": false
+                },
+                {
+                    "id": "c2",
+                    "content": "        print(\"Looping...\", i)\n        i = i + 1",
+                    "is_distractor": false
+                },
+                {
+                    "id": "c3",
+                    "content": "main()",
+                    "is_distractor": false
+                },
+                {
+                    "id": "d1",
+                    "content": "    for i in range(3):\n        print(\"Looping\")",
+                    "is_distractor": true
+                },
+                {
+                    "id": "d2",
+                    "content": "    if i < 3:\n        continue",
+                    "is_distractor": true
+                }
+            ],
+            "solution_order": [
+                "c1",
+                "c2",
+                "c3"
+            ]
+        },
+        {
+            "id": "py_06",
+            "language": "Python",
+            "difficulty": "Easy",
+            "task": "Simulate a Do-While loop in Python that executes at least once and breaks when 'i' is 5 or greater.",
+            "allowed_moves": 6,
+            "code_chunks": [
+                {
+                    "id": "c1",
+                    "content": "def main():\n    i = 10\n    while True:",
+                    "is_distractor": false
+                },
+                {
+                    "id": "c2",
+                    "content": "        print(\"This prints at least once.\")\n        i = i + 1",
+                    "is_distractor": false
+                },
+                {
+                    "id": "c3",
+                    "content": "        if i >= 5:\n            break\nmain()",
+                    "is_distractor": false
+                },
+                {
+                    "id": "d1",
+                    "content": "    do:\n        print(\"Running\")\n    while(i < 5)",
+                    "is_distractor": true
+                },
+                {
+                    "id": "d2",
+                    "content": "    if i < 5:\n        continue\n    else:",
+                    "is_distractor": true
+                }
+            ],
+            "solution_order": [
+                "c1",
+                "c2",
+                "c3"
+            ]
+        },
+        {
+            "id": "py_07",
+            "language": "Python",
+            "difficulty": "Medium",
+            "task": "Iterate through a list of fruits using an index-based loop.",
+            "allowed_moves": 8,
+            "code_chunks": [
+                {
+                    "id": "c1",
+                    "content": "def main():\n    fruits = [\"Apple\", \"Banana\", \"Cherry\"]",
+                    "is_distractor": false
+                },
+                {
+                    "id": "c2",
+                    "content": "    length = len(fruits)\n    for i in range(length):",
+                    "is_distractor": false
+                },
+                {
+                    "id": "c3",
+                    "content": "        print(fruits[i])\n\nmain()",
+                    "is_distractor": false
+                },
+                {
+                    "id": "d1",
+                    "content": "    for fruit in fruits:\n        print(fruit)",
+                    "is_distractor": true
+                },
+                {
+                    "id": "d2",
+                    "content": "    i = 0\n    while i < fruits.length:",
+                    "is_distractor": true
+                },
+                {
+                    "id": "d3",
+                    "content": "    print(fruits)\n    break",
+                    "is_distractor": true
+                }
+            ],
+            "solution_order": [
+                "c1",
+                "c2",
+                "c3"
+            ]
+        },
+        {
+            "id": "py_08",
+            "language": "Python",
+            "difficulty": "Medium",
+            "task": "Calculate the sum of integers in a list using a manual loop.",
+            "allowed_moves": 8,
+            "code_chunks": [
+                {
+                    "id": "c1",
+                    "content": "def main():\n    data = [5, 10, 15, 20]\n    sum_value = 0",
+                    "is_distractor": false
+                },
+                {
+                    "id": "c2",
+                    "content": "    for i in range(len(data)):\n        sum_value = sum_value + data[i]",
+                    "is_distractor": false
+                },
+                {
+                    "id": "c3",
+                    "content": "    print(\"Total Sum:\", sum_value)\n\nmain()",
+                    "is_distractor": false
+                },
+                {
+                    "id": "d1",
+                    "content": "    sum_value = sum(data)\n    print(sum_value)",
+                    "is_distractor": true
+                },
+                {
+                    "id": "d2",
+                    "content": "    for i in data:\n        sum_value += i",
+                    "is_distractor": true
+                },
+                {
+                    "id": "d3",
+                    "content": "    return data.sum()",
+                    "is_distractor": true
+                }
+            ],
+            "solution_order": [
+                "c1",
+                "c2",
+                "c3"
+            ]
+        },
+        {
+            "id": "py_09",
+            "language": "Python",
+            "difficulty": "Medium",
+            "task": "Access and print a specific value from a 2D matrix at row 1, column 0.",
+            "allowed_moves": 8,
+            "code_chunks": [
+                {
+                    "id": "c1",
+                    "content": "def main():\n    matrix = [\n        [1, 2],",
+                    "is_distractor": false
+                },
+                {
+                    "id": "c2",
+                    "content": "        [3, 4]\n    ]",
+                    "is_distractor": false
+                },
+                {
+                    "id": "c3",
+                    "content": "    row = 1\n    col = 0",
+                    "is_distractor": false
+                },
+                {
+                    "id": "c4",
+                    "content": "    print(\"Value:\", matrix[row][col])\n\nmain()",
+                    "is_distractor": false
+                },
+                {
+                    "id": "d1",
+                    "content": "    print(matrix[col][row])",
+                    "is_distractor": true
+                },
+                {
+                    "id": "d2",
+                    "content": "    for i in matrix:\n        print(i)",
+                    "is_distractor": true
+                },
+                {
+                    "id": "d3",
+                    "content": "    matrix = {1, 2, 3, 4}",
+                    "is_distractor": true
+                }
+            ],
+            "solution_order": [
+                "c1",
+                "c2",
+                "c3",
+                "c4"
+            ]
+        },
+        {
+            "id": "py_10",
+            "language": "Python",
+            "difficulty": "Medium",
+            "task": "Use nested loops to print all elements of a 2x3 grid.",
+            "allowed_moves": 8,
+            "code_chunks": [
+                {
+                    "id": "c1",
+                    "content": "def main():\n    grid = [[1, 2, 3], [4, 5, 6]]\n    rows = 2",
+                    "is_distractor": false
+                },
+                {
+                    "id": "c2",
+                    "content": "    cols = 3\n    for i in range(rows):",
+                    "is_distractor": false
+                },
+                {
+                    "id": "c3",
+                    "content": "        for j in range(cols):\n            print(grid[i][j], end=\" \")",
+                    "is_distractor": false
+                },
+                {
+                    "id": "c4",
+                    "content": "        print()\nmain()",
+                    "is_distractor": false
+                },
+                {
+                    "id": "d1",
+                    "content": "    for i in range(cols):\n        for j in range(rows):",
+                    "is_distractor": true
+                },
+                {
+                    "id": "d2",
+                    "content": "            print(grid[j][i])",
+                    "is_distractor": true
+                },
+                {
+                    "id": "d3",
+                    "content": "    print(grid.all())",
+                    "is_distractor": true
+                }
+            ],
+            "solution_order": [
+                "c1",
+                "c2",
+                "c3",
+                "c4"
+            ]
+        },
+        {
+            "id": "py_11",
+            "language": "Python",
+            "difficulty": "Medium",
+            "task": "Perform matrix addition of two 2x2 matrices A and B into C using nested loops.",
+            "allowed_moves": 9,
+            "code_chunks": [
+                {
+                    "id": "c1",
+                    "content": "def main():\n    A = [[1, 1], [1, 1]]\n    B = [[2, 2], [2, 2]]",
+                    "is_distractor": false
+                },
+                {
+                    "id": "c2",
+                    "content": "    C = [[0, 0], [0, 0]]\n    for i in range(2):",
+                    "is_distractor": false
+                },
+                {
+                    "id": "c3",
+                    "content": "        for j in range(2):\n            C[i][j] = A[i][j] + B[i][j]",
+                    "is_distractor": false
+                },
+                {
+                    "id": "c4",
+                    "content": "            print(C[i][j], end=\" \")\n        print()\nmain()",
+                    "is_distractor": false
+                },
+                {
+                    "id": "d1",
+                    "content": "            C[j][i] = A[i] + B[j]",
+                    "is_distractor": true
+                },
+                {
+                    "id": "d2",
+                    "content": "    C = A + B",
+                    "is_distractor": true
+                },
+                {
+                    "id": "d3",
+                    "content": "    print(A + B)",
+                    "is_distractor": true
+                }
+            ],
+            "solution_order": [
+                "c1",
+                "c2",
+                "c3",
+                "c4"
+            ]
+        },
+        {
+            "id": "py_12",
+            "language": "Python",
+            "difficulty": "Hard",
+            "task": "Define a 'Car' class with a 'honk' method and a brand attribute. Instantiate it in 'main'.",
+            "allowed_moves": 15,
+            "code_chunks": [
+                {
+                    "id": "c1",
+                    "content": "class Car:\n    def __init__(self):\n        self.brand = \"\"",
+                    "is_distractor": false
+                },
+                {
+                    "id": "c2",
+                    "content": "    def honk(self):\n        print(\"Beep Beep!\")",
+                    "is_distractor": false
+                },
+                {
+                    "id": "c3",
+                    "content": "def main():\n    my_car = Car()\n    my_car.brand = \"Ford\"",
+                    "is_distractor": false
+                },
+                {
+                    "id": "c4",
+                    "content": "    print(my_car.brand)\n    my_car.honk()",
+                    "is_distractor": false
+                },
+                {
+                    "id": "c5",
+                    "content": "main()",
+                    "is_distractor": false
+                },
+                {
+                    "id": "d1",
+                    "content": "class Car:\n    brand = \"\"",
+                    "is_distractor": true
+                },
+                {
+                    "id": "d2",
+                    "content": "    void honk() {\n        System.out.println(\"Beep\")\n    }",
+                    "is_distractor": true
+                },
+                {
+                    "id": "d3",
+                    "content": "    def __init__(brand):\n        brand = \"Ford\"",
+                    "is_distractor": true
+                },
+                {
+                    "id": "d4",
+                    "content": "    my_car = new Car()",
+                    "is_distractor": true
+                },
+                {
+                    "id": "d5",
+                    "content": "    honk(my_car)",
+                    "is_distractor": true
+                }
+            ],
+            "solution_order": [
+                "c1",
+                "c2",
+                "c3",
+                "c4",
+                "c5"
+            ]
+        },
+        {
+            "id": "py_13",
+            "language": "Python",
+            "difficulty": "Hard",
+            "task": "Implement a class 'Account' with a private balance attribute and getter/setter methods.",
+            "allowed_moves": 16,
+            "code_chunks": [
+                {
+                    "id": "c1",
+                    "content": "class Account:\n    def __init__(self):\n        self.__balance = 0",
+                    "is_distractor": false
+                },
+                {
+                    "id": "c2",
+                    "content": "    def set_balance(self, amount):\n        if amount >= 0:\n            self.__balance = amount",
+                    "is_distractor": false
+                },
+                {
+                    "id": "c3",
+                    "content": "    def get_balance(self):\n        return self.__balance",
+                    "is_distractor": false
+                },
+                {
+                    "id": "c4",
+                    "content": "def main():\n    acc = Account()\n    acc.set_balance(100)",
+                    "is_distractor": false
+                },
+                {
+                    "id": "c5",
+                    "content": "    print(\"Balance:\", acc.get_balance())\n\nmain()",
+                    "is_distractor": false
+                },
+                {
+                    "id": "d1",
+                    "content": "    def set_balance(amount):\n        self.balance = amount",
+                    "is_distractor": true
+                },
+                {
+                    "id": "d2",
+                    "content": "    public int getBalance() {\n        return balance;\n    }",
+                    "is_distractor": true
+                },
+                {
+                    "id": "d3",
+                    "content": "    acc.balance = 100",
+                    "is_distractor": true
+                },
+                {
+                    "id": "d4",
+                    "content": "    self.__balance = amount\n    else return false",
+                    "is_distractor": true
+                },
+                {
+                    "id": "d5",
+                    "content": "    print(acc.__balance)",
+                    "is_distractor": true
+                }
+            ],
+            "solution_order": [
+                "c1",
+                "c2",
+                "c3",
+                "c4",
+                "c5"
+            ]
+        },
+        {
+            "id": "py_14",
+            "language": "Python",
+            "difficulty": "Hard",
+            "task": "Demonstrate inheritance where a 'Dog' class inherits 'eat' from 'Animal' and adds 'bark'.",
+            "allowed_moves": 15,
+            "code_chunks": [
+                {
+                    "id": "c1",
+                    "content": "class Animal:\n    def eat(self):\n        print(\"I can eat.\")",
+                    "is_distractor": false
+                },
+                {
+                    "id": "c2",
+                    "content": "class Dog(Animal):\n    def bark(self):\n        print(\"I can bark.\")",
+                    "is_distractor": false
+                },
+                {
+                    "id": "c3",
+                    "content": "def main():\n    d = Dog()\n    d.eat()",
+                    "is_distractor": false
+                },
+                {
+                    "id": "c4",
+                    "content": "    d.bark()\n\nmain()",
+                    "is_distractor": false
+                },
+                {
+                    "id": "d1",
+                    "content": "class Dog extends Animal:\n    void bark()",
+                    "is_distractor": true
+                },
+                {
+                    "id": "d2",
+                    "content": "    def eat():\n        super.eat()",
+                    "is_distractor": true
+                },
+                {
+                    "id": "d3",
+                    "content": "    d = new Dog()",
+                    "is_distractor": true
+                },
+                {
+                    "id": "d4",
+                    "content": "class Animal(Dog):\n    pass",
+                    "is_distractor": true
+                },
+                {
+                    "id": "d5",
+                    "content": "    d.meow()",
+                    "is_distractor": true
+                }
+            ],
+            "solution_order": [
+                "c1",
+                "c2",
+                "c3",
+                "c4"
+            ]
+        },
+        {
+            "id": "py_15",
+            "language": "Python",
+            "difficulty": "Hard",
+            "task": "Show inheritance with constructors: 'Student' inherits from 'Person' and calls the parent constructor.",
+            "allowed_moves": 16,
+            "code_chunks": [
+                {
+                    "id": "c1",
+                    "content": "class Person:\n    def __init__(self, name):\n        self.name = name",
+                    "is_distractor": false
+                },
+                {
+                    "id": "c2",
+                    "content": "class Student(Person):\n    def __init__(self, name, student_id):\n        Person.__init__(self, name)",
+                    "is_distractor": false
+                },
+                {
+                    "id": "c3",
+                    "content": "        self.id = student_id\n\ndef main():",
+                    "is_distractor": false
+                },
+                {
+                    "id": "c4",
+                    "content": "    s = Student(\"Alice\", 101)\n    print(\"Name:\", s.name, \"ID:\", s.id)\nmain()",
+                    "is_distractor": false
+                },
+                {
+                    "id": "d1",
+                    "content": "    super(name)\n    this.id = student_id",
+                    "is_distractor": true
+                },
+                {
+                    "id": "d2",
+                    "content": "class Student extends Person:\n    int id;",
+                    "is_distractor": true
+                },
+                {
+                    "id": "d3",
+                    "content": "    def __init__(self, name):\n        self.id = name",
+                    "is_distractor": true
+                },
+                {
+                    "id": "d4",
+                    "content": "    s = new Student(\"Alice\")",
+                    "is_distractor": true
+                },
+                {
+                    "id": "d5",
+                    "content": "    print(s.get_name())",
+                    "is_distractor": true
+                }
+            ],
+            "solution_order": [
+                "c1",
+                "c2",
+                "c3",
+                "c4"
+            ]
+        },
+        {
+            "id": "java_01",
+            "language": "Java",
+            "difficulty": "Easy",
+            "task": "Create a static method 'sayHello' in Java and call it from the main method.",
+            "allowed_moves": 5,
+            "code_chunks": [
+                {
+                    "id": "c1",
+                    "content": "class Main {\n    static void sayHello() {",
+                    "is_distractor": false
+                },
+                {
+                    "id": "c2",
+                    "content": "        System.out.println(\"Hello from the function!\");\n    }",
+                    "is_distractor": false
+                },
+                {
+                    "id": "c3",
+                    "content": "    public static void main(String[] args) {\n        sayHello();\n    }\n}",
+                    "is_distractor": false
+                },
+                {
+                    "id": "d1",
+                    "content": "    void sayHello():\n        print(\"Hello\")",
+                    "is_distractor": true
+                },
+                {
+                    "id": "d2",
+                    "content": "    public void main() {\n        sayHello",
+                    "is_distractor": true
+                }
+            ],
+            "solution_order": [
+                "c1",
+                "c2",
+                "c3"
+            ]
+        },
+        {
+            "id": "java_02",
+            "language": "Java",
+            "difficulty": "Easy",
+            "task": "Write a Java method 'add' returning the sum of two integers.",
+            "allowed_moves": 5,
+            "code_chunks": [
+                {
+                    "id": "c1",
+                    "content": "class Main {\n    static int add(int a, int b) {\n        return a + b;",
+                    "is_distractor": false
+                },
+                {
+                    "id": "c2",
+                    "content": "    }\n    public static void main(String[] args) {",
+                    "is_distractor": false
+                },
+                {
+                    "id": "c3",
+                    "content": "        int result = add(10, 5);\n        System.out.println(\"The sum is: \" + result);\n    }\n}",
+                    "is_distractor": false
+                },
+                {
+                    "id": "d1",
+                    "content": "    static void add(a, b) {\n        return a + b",
+                    "is_distractor": true
+                },
+                {
+                    "id": "d2",
+                    "content": "    System.out.print(add(10, 5));\n    return result;",
+                    "is_distractor": true
+                }
+            ],
+            "solution_order": [
+                "c1",
+                "c2",
+                "c3"
+            ]
+        },
+        {
+            "id": "java_03",
+            "language": "Java",
+            "difficulty": "Easy",
+            "task": "Use a switch statement in Java to handle menu selection.",
+            "allowed_moves": 7,
+            "code_chunks": [
+                {
+                    "id": "c1",
+                    "content": "class Main {\n    public static void main(String[] args) {\n        int choice = 2;",
+                    "is_distractor": false
+                },
+                {
+                    "id": "c2",
+                    "content": "        switch (choice) {\n            case 1:\n                System.out.println(\"You chose Option 1\");",
+                    "is_distractor": false
+                },
+                {
+                    "id": "c3",
+                    "content": "                break;\n            case 2:\n                System.out.println(\"You chose Option 2\");",
+                    "is_distractor": false
+                },
+                {
+                    "id": "c4",
+                    "content": "                break;\n            default:\n                System.out.println(\"Invalid choice\");",
+                    "is_distractor": false
+                },
+                {
+                    "id": "c5",
+                    "content": "        }\n    }\n}",
+                    "is_distractor": false
+                },
+                {
+                    "id": "d1",
+                    "content": "        if choice == 1:\n            print(\"Option 1\")",
+                    "is_distractor": true
+                },
+                {
+                    "id": "d2",
+                    "content": "        case 3:\n            continue;",
+                    "is_distractor": true
+                }
+            ],
+            "solution_order": [
+                "c1",
+                "c2",
+                "c3",
+                "c4",
+                "c5"
+            ]
+        },
+        {
+            "id": "java_04",
+            "language": "Java",
+            "difficulty": "Easy",
+            "task": "Write a Java for-loop to print numbers 1 to 5.",
+            "allowed_moves": 5,
+            "code_chunks": [
+                {
+                    "id": "c1",
+                    "content": "class Main {\n    public static void main(String[] args) {",
+                    "is_distractor": false
+                },
+                {
+                    "id": "c2",
+                    "content": "        for (int i = 1; i <= 5; i++) {\n            System.out.println(i);\n        }",
+                    "is_distractor": false
+                },
+                {
+                    "id": "c3",
+                    "content": "    }\n}",
+                    "is_distractor": false
+                },
+                {
+                    "id": "d1",
+                    "content": "    for i in range(1, 6):\n        print(i)",
+                    "is_distractor": true
+                },
+                {
+                    "id": "d2",
+                    "content": "    while (i <= 5) {\n        i++",
+                    "is_distractor": true
+                }
+            ],
+            "solution_order": [
+                "c1",
+                "c2",
+                "c3"
+            ]
+        },
+        {
+            "id": "java_05",
+            "language": "Java",
+            "difficulty": "Easy",
+            "task": "Create a Java while loop that prints 'Looping' while 'i' is less than 3.",
+            "allowed_moves": 6,
+            "code_chunks": [
+                {
+                    "id": "c1",
+                    "content": "class Main {\n    public static void main(String[] args) {\n        int i = 0;",
+                    "is_distractor": false
+                },
+                {
+                    "id": "c2",
+                    "content": "        while (i < 3) {\n            System.out.println(\"Looping: \" + i);\n            i++;",
+                    "is_distractor": false
+                },
+                {
+                    "id": "c3",
+                    "content": "        }\n    }\n}",
+                    "is_distractor": false
+                },
+                {
+                    "id": "d1",
+                    "content": "        for (int i=0; i<3; i++) {\n            print(i)",
+                    "is_distractor": true
+                },
+                {
+                    "id": "d2",
+                    "content": "        do {\n            i--",
+                    "is_distractor": true
+                }
+            ],
+            "solution_order": [
+                "c1",
+                "c2",
+                "c3"
+            ]
+        },
+        {
+            "id": "java_06",
+            "language": "Java",
+            "difficulty": "Easy",
+            "task": "Demonstrate a do-while loop in Java that executes at least once.",
+            "allowed_moves": 6,
+            "code_chunks": [
+                {
+                    "id": "c1",
+                    "content": "class Main {\n    public static void main(String[] args) {\n        int i = 10;",
+                    "is_distractor": false
+                },
+                {
+                    "id": "c2",
+                    "content": "        do {\n            System.out.println(\"This runs at least once\");\n            i++;",
+                    "is_distractor": false
+                },
+                {
+                    "id": "c3",
+                    "content": "        } while (i < 5);\n    }\n}",
+                    "is_distractor": false
+                },
+                {
+                    "id": "d1",
+                    "content": "        while (i < 5) {\n            System.out.println(\"Runs\")",
+                    "is_distractor": true
+                },
+                {
+                    "id": "d2",
+                    "content": "        if (i > 5) break;\n        loop",
+                    "is_distractor": true
+                }
+            ],
+            "solution_order": [
+                "c1",
+                "c2",
+                "c3"
+            ]
+        },
+        {
+            "id": "java_07",
+            "language": "Java",
+            "difficulty": "Medium",
+            "task": "Traverse an integer array in Java using a standard for-loop.",
+            "allowed_moves": 8,
+            "code_chunks": [
+                {
+                    "id": "c1",
+                    "content": "class Main {\n    public static void main(String[] args) {\n        int[] numbers = {10, 20, 30};",
+                    "is_distractor": false
+                },
+                {
+                    "id": "c2",
+                    "content": "        for (int i = 0; i < numbers.length; i++) {\n            System.out.println(numbers[i]);\n        }",
+                    "is_distractor": false
+                },
+                {
+                    "id": "c3",
+                    "content": "    }\n}",
+                    "is_distractor": false
+                },
+                {
+                    "id": "d1",
+                    "content": "        for i in numbers:\n            print(i)",
+                    "is_distractor": true
+                },
+                {
+                    "id": "d2",
+                    "content": "        int numbers = [10, 20, 30];\n        while(true)",
+                    "is_distractor": true
+                },
+                {
+                    "id": "d3",
+                    "content": "        System.out.println(numbers)",
+                    "is_distractor": true
+                }
+            ],
+            "solution_order": [
+                "c1",
+                "c2",
+                "c3"
+            ]
+        },
+        {
+            "id": "java_08",
+            "language": "Java",
+            "difficulty": "Medium",
+            "task": "Traverse a String array in Java using an enhanced for-loop (for-each).",
+            "allowed_moves": 8,
+            "code_chunks": [
+                {
+                    "id": "c1",
+                    "content": "class Main {\n    public static void main(String[] args) {\n        String[] fruits = {\"Apple\", \"Banana\", \"Cherry\"};",
+                    "is_distractor": false
+                },
+                {
+                    "id": "c2",
+                    "content": "        for (String fruit : fruits) {\n            System.out.println(fruit);\n        }",
+                    "is_distractor": false
+                },
+                {
+                    "id": "c3",
+                    "content": "    }\n}",
+                    "is_distractor": false
+                },
+                {
+                    "id": "d1",
+                    "content": "        for (int i=0; i<3; i++)\n            System.out.println(fruits)",
+                    "is_distractor": true
+                },
+                {
+                    "id": "d2",
+                    "content": "        fruits.forEach(f -> print(f));\n        return;",
+                    "is_distractor": true
+                },
+                {
+                    "id": "d3",
+                    "content": "        String fruits = \"Apple\";",
+                    "is_distractor": true
+                }
+            ],
+            "solution_order": [
+                "c1",
+                "c2",
+                "c3"
+            ]
+        },
+        {
+            "id": "java_09",
+            "language": "Java",
+            "difficulty": "Medium",
+            "task": "Calculate the total sum of an integer array in Java.",
+            "allowed_moves": 9,
+            "code_chunks": [
+                {
+                    "id": "c1",
+                    "content": "class Main {\n    public static void main(String[] args) {\n        int[] arr = {5, 10, 15, 20};",
+                    "is_distractor": false
+                },
+                {
+                    "id": "c2",
+                    "content": "        int sum = 0;\n        for (int i = 0; i < arr.length; i++) {\n            sum += arr[i];",
+                    "is_distractor": false
+                },
+                {
+                    "id": "c3",
+                    "content": "        }\n        System.out.println(\"Total Sum: \" + sum);\n    }\n}",
+                    "is_distractor": false
+                },
+                {
+                    "id": "d1",
+                    "content": "        int sum = arr.sum();\n        print(sum)",
+                    "is_distractor": true
+                },
+                {
+                    "id": "d2",
+                    "content": "        for (int x : arr)\n            return x + sum;",
+                    "is_distractor": true
+                },
+                {
+                    "id": "d3",
+                    "content": "        sum = arr[0] + arr[1];",
+                    "is_distractor": true
+                }
+            ],
+            "solution_order": [
+                "c1",
+                "c2",
+                "c3"
+            ]
+        },
+        {
+            "id": "java_10",
+            "language": "Java",
+            "difficulty": "Medium",
+            "task": "Access a specific element [1][0] in a 2D integer array in Java.",
+            "allowed_moves": 8,
+            "code_chunks": [
+                {
+                    "id": "c1",
+                    "content": "class Main {\n    public static void main(String[] args) {\n        int[][] matrix = { {1, 2}, {3, 4} };",
+                    "is_distractor": false
+                },
+                {
+                    "id": "c2",
+                    "content": "        System.out.println(\"Element at [1][0]: \" + matrix[1][0]);\n    }\n}",
+                    "is_distractor": false
+                },
+                {
+                    "id": "d1",
+                    "content": "        int matrix = [1, 2, 3, 4];\n        print(matrix)",
+                    "is_distractor": true
+                },
+                {
+                    "id": "d2",
+                    "content": "        System.out.println(matrix[0,1]);\n        return;",
+                    "is_distractor": true
+                },
+                {
+                    "id": "d3",
+                    "content": "        int[] matrix = new int[2];",
+                    "is_distractor": true
+                }
+            ],
+            "solution_order": [
+                "c1",
+                "c2"
+            ]
+        },
+        {
+            "id": "java_11",
+            "language": "Java",
+            "difficulty": "Medium",
+            "task": "Print all elements of a 2D grid using nested loops in Java.",
+            "allowed_moves": 9,
+            "code_chunks": [
+                {
+                    "id": "c1",
+                    "content": "class Main {\n    public static void main(String[] args) {\n        int[][] grid = { {1, 2, 3}, {4, 5, 6} };",
+                    "is_distractor": false
+                },
+                {
+                    "id": "c2",
+                    "content": "        for (int i = 0; i < grid.length; i++) {\n            for (int j = 0; j < grid[i].length; j++) {",
+                    "is_distractor": false
+                },
+                {
+                    "id": "c3",
+                    "content": "                System.out.print(grid[i][j] + \" \");\n            }\n            System.out.println();",
+                    "is_distractor": false
+                },
+                {
+                    "id": "c4",
+                    "content": "        }\n    }\n}",
+                    "is_distractor": false
+                },
+                {
+                    "id": "d1",
+                    "content": "            print(grid[j][i]);\n        }\n    }",
+                    "is_distractor": true
+                },
+                {
+                    "id": "d2",
+                    "content": "        for (int i : grid) {\n            System.out.print(i)",
+                    "is_distractor": true
+                },
+                {
+                    "id": "d3",
+                    "content": "        grid.print()",
+                    "is_distractor": true
+                }
+            ],
+            "solution_order": [
+                "c1",
+                "c2",
+                "c3",
+                "c4"
+            ]
+        },
+        {
+            "id": "java_12",
+            "language": "Java",
+            "difficulty": "Medium",
+            "task": "Perform matrix addition of two 2x2 arrays into a third array 'C' in Java.",
+            "allowed_moves": 10,
+            "code_chunks": [
+                {
+                    "id": "c1",
+                    "content": "class Main {\n    public static void main(String[] args) {\n        int[][] A = { {1, 1}, {1, 1} };",
+                    "is_distractor": false
+                },
+                {
+                    "id": "c2",
+                    "content": "        int[][] B = { {2, 2}, {2, 2} };\n        int[][] C = new int[2][2];",
+                    "is_distractor": false
+                },
+                {
+                    "id": "c3",
+                    "content": "        for (int i = 0; i < 2; i++) {\n            for (int j = 0; j < 2; j++) {",
+                    "is_distractor": false
+                },
+                {
+                    "id": "c4",
+                    "content": "                C[i][j] = A[i][j] + B[i][j];\n                System.out.print(C[i][j] + \" \");",
+                    "is_distractor": false
+                },
+                {
+                    "id": "c5",
+                    "content": "            }\n            System.out.println();\n        }\n    }\n}",
+                    "is_distractor": false
+                },
+                {
+                    "id": "d1",
+                    "content": "        C = A + B;\n        print(C)",
+                    "is_distractor": true
+                },
+                {
+                    "id": "d2",
+                    "content": "                C[j][i] = A[i] + B[j];\n                return;",
+                    "is_distractor": true
+                },
+                {
+                    "id": "d3",
+                    "content": "        int[] C = new int[4];",
+                    "is_distractor": true
+                }
+            ],
+            "solution_order": [
+                "c1",
+                "c2",
+                "c3",
+                "c4",
+                "c5"
+            ]
+        },
+        {
+            "id": "java_13",
+            "language": "Java",
+            "difficulty": "Hard",
+            "task": "Define a Java class 'Car' with a method 'honk', and use it in 'Main'.",
+            "allowed_moves": 15,
+            "code_chunks": [
+                {
+                    "id": "c1",
+                    "content": "class Car {\n    String brand;\n    void honk() {",
+                    "is_distractor": false
+                },
+                {
+                    "id": "c2",
+                    "content": "        System.out.println(\"Beep Beep!\");\n    }\n}",
+                    "is_distractor": false
+                },
+                {
+                    "id": "c3",
+                    "content": "class Main {\n    public static void main(String[] args) {\n        Car myCar = new Car();",
+                    "is_distractor": false
+                },
+                {
+                    "id": "c4",
+                    "content": "        myCar.brand = \"Ford\";\n        System.out.println(myCar.brand);",
+                    "is_distractor": false
+                },
+                {
+                    "id": "c5",
+                    "content": "        myCar.honk();\n    }\n}",
+                    "is_distractor": false
+                },
+                {
+                    "id": "d1",
+                    "content": "class Car:\n    def honk():",
+                    "is_distractor": true
+                },
+                {
+                    "id": "d2",
+                    "content": "    public void main() {\n        print(brand)",
+                    "is_distractor": true
+                },
+                {
+                    "id": "d3",
+                    "content": "    Car myCar = Car();\n    myCar->honk()",
+                    "is_distractor": true
+                },
+                {
+                    "id": "d4",
+                    "content": "    private String brand;\n    return;",
+                    "is_distractor": true
+                },
+                {
+                    "id": "d5",
+                    "content": "    class Main extends Car {\n        super.honk()",
+                    "is_distractor": true
+                }
+            ],
+            "solution_order": [
+                "c1",
+                "c2",
+                "c3",
+                "c4",
+                "c5"
+            ]
+        },
+        {
+            "id": "java_14",
+            "language": "Java",
+            "difficulty": "Hard",
+            "task": "Implement encapsulation in Java using private variables and public getters/setters.",
+            "allowed_moves": 16,
+            "code_chunks": [
+                {
+                    "id": "c1",
+                    "content": "class Account {\n    private int balance;\n    public void setBalance(int b) {",
+                    "is_distractor": false
+                },
+                {
+                    "id": "c2",
+                    "content": "        if (b >= 0) {\n            balance = b;\n        }\n    }",
+                    "is_distractor": false
+                },
+                {
+                    "id": "c3",
+                    "content": "    public int getBalance() {\n        return balance;\n    }\n}",
+                    "is_distractor": false
+                },
+                {
+                    "id": "c4",
+                    "content": "class Main {\n    public static void main(String[] args) {\n        Account acc = new Account();",
+                    "is_distractor": false
+                },
+                {
+                    "id": "c5",
+                    "content": "        acc.setBalance(100);\n        System.out.println(\"Balance: \" + acc.getBalance());\n    }\n}",
+                    "is_distractor": false
+                },
+                {
+                    "id": "d1",
+                    "content": "    public int balance;\n    acc.balance = 100;",
+                    "is_distractor": true
+                },
+                {
+                    "id": "d2",
+                    "content": "    def setBalance(b):\n        self.balance = b",
+                    "is_distractor": true
+                },
+                {
+                    "id": "d3",
+                    "content": "    return this.balance;\n    else return false;",
+                    "is_distractor": true
+                },
+                {
+                    "id": "d4",
+                    "content": "    void getBalance() {\n        print(balance)",
+                    "is_distractor": true
+                },
+                {
+                    "id": "d5",
+                    "content": "    Account acc = new Account(100);",
+                    "is_distractor": true
+                }
+            ],
+            "solution_order": [
+                "c1",
+                "c2",
+                "c3",
+                "c4",
+                "c5"
+            ]
+        },
+        {
+            "id": "java_15",
+            "language": "Java",
+            "difficulty": "Hard",
+            "task": "Show inheritance where 'Dog' extends 'Animal' and overrides or adds methods.",
+            "allowed_moves": 15,
+            "code_chunks": [
+                {
+                    "id": "c1",
+                    "content": "class Animal {\n    void eat() {\n        System.out.println(\"I can eat\");\n    }\n}",
+                    "is_distractor": false
+                },
+                {
+                    "id": "c2",
+                    "content": "class Dog extends Animal {\n    void bark() {\n        System.out.println(\"I can bark\");\n    }\n}",
+                    "is_distractor": false
+                },
+                {
+                    "id": "c3",
+                    "content": "class Main {\n    public static void main(String[] args) {\n        Dog d = new Dog();",
+                    "is_distractor": false
+                },
+                {
+                    "id": "c4",
+                    "content": "        d.eat();\n        d.bark();\n    }\n}",
+                    "is_distractor": false
+                },
+                {
+                    "id": "d1",
+                    "content": "class Dog implements Animal {\n    void eat()",
+                    "is_distractor": true
+                },
+                {
+                    "id": "d2",
+                    "content": "    def bark(self):\n        print(\"Bark\")",
+                    "is_distractor": true
+                },
+                {
+                    "id": "d3",
+                    "content": "    Animal a = new Animal();\n    a.bark();",
+                    "is_distractor": true
+                },
+                {
+                    "id": "d4",
+                    "content": "    super.bark();\n    return;",
+                    "is_distractor": true
+                },
+                {
+                    "id": "d5",
+                    "content": "    Dog d = new Animal();",
+                    "is_distractor": true
+                }
+            ],
+            "solution_order": [
+                "c1",
+                "c2",
+                "c3",
+                "c4"
+            ]
+        },
+        {
+            "id": "java_16",
+            "language": "Java",
+            "difficulty": "Hard",
+            "task": "Use 'super' to call a parent constructor in a Java inheritance example.",
+            "allowed_moves": 16,
+            "code_chunks": [
+                {
+                    "id": "c1",
+                    "content": "class Person {\n    String name;\n    Person(String n) {\n        name = n;\n    }\n}",
+                    "is_distractor": false
+                },
+                {
+                    "id": "c2",
+                    "content": "class Student extends Person {\n    int id;\n    Student(String n, int i) {",
+                    "is_distractor": false
+                },
+                {
+                    "id": "c3",
+                    "content": "        super(n);\n        id = i;\n    }\n}",
+                    "is_distractor": false
+                },
+                {
+                    "id": "c4",
+                    "content": "class Main {\n    public static void main(String[] args) {\n        Student s = new Student(\"Alice\", 101);",
+                    "is_distractor": false
+                },
+                {
+                    "id": "c5",
+                    "content": "        System.out.println(\"Name: \" + s.name + \", ID: \" + s.id);\n    }\n}",
+                    "is_distractor": false
+                },
+                {
+                    "id": "d1",
+                    "content": "    Person(n);\n    this.id = i;",
+                    "is_distractor": true
+                },
+                {
+                    "id": "d2",
+                    "content": "    def __init__(self, n):\n        super.__init__(n)",
+                    "is_distractor": true
+                },
+                {
+                    "id": "d3",
+                    "content": "    Student s = new Person(\"Alice\");\n    print(s.id)",
+                    "is_distractor": true
+                },
+                {
+                    "id": "d4",
+                    "content": "    class Student : public Person {\n    public:",
+                    "is_distractor": true
+                },
+                {
+                    "id": "d5",
+                    "content": "    void Student(String n) {\n        name = n;",
+                    "is_distractor": true
+                }
+            ],
+            "solution_order": [
+                "c1",
+                "c2",
+                "c3",
+                "c4",
+                "c5"
+            ]
+        },
+        {
+            "id": "cpp_01",
+            "language": "C++",
+            "difficulty": "Easy",
+            "task": "Create a function named 'sayHello' that prints a message, and call it from the 'main' function.",
+            "allowed_moves": 5,
+            "code_chunks": [
+                {
+                    "id": "c1",
+                    "content": "#include <iostream>\nusing namespace std;\nvoid sayHello() {",
+                    "is_distractor": false
+                },
+                {
+                    "id": "c2",
+                    "content": "    cout << \"Hello from function!\" << endl;\n}\nint main() {",
+                    "is_distractor": false
+                },
+                {
+                    "id": "c3",
+                    "content": "    sayHello();\n    return 0;\n}",
+                    "is_distractor": false
+                },
+                {
+                    "id": "d1",
+                    "content": "def sayHello():\n    print(\"Hello\")",
+                    "is_distractor": true
+                },
+                {
+                    "id": "d2",
+                    "content": "    function sayHello() {\n    return \"Hello\";",
+                    "is_distractor": true
+                }
+            ],
+            "solution_order": [
+                "c1",
+                "c2",
+                "c3"
+            ]
+        },
+        {
+            "id": "cpp_02",
+            "language": "C++",
+            "difficulty": "Easy",
+            "task": "Write a function 'add' that takes two integers and returns their sum. Display the result in 'main'.",
+            "allowed_moves": 6,
+            "code_chunks": [
+                {
+                    "id": "c1",
+                    "content": "int add(int a, int b) {\n    int result = a + b;\n    return result;",
+                    "is_distractor": false
+                },
+                {
+                    "id": "c2",
+                    "content": "}\nint main() {\n    int x = 10, y = 5;",
+                    "is_distractor": false
+                },
+                {
+                    "id": "c3",
+                    "content": "    int sum = add(x, y);\n    cout << \"Sum: \" << sum << endl;",
+                    "is_distractor": false
+                },
+                {
+                    "id": "c4",
+                    "content": "    return 0;\n}",
+                    "is_distractor": false
+                },
+                {
+                    "id": "d1",
+                    "content": "void add(a, b) {\n    return a + b;",
+                    "is_distractor": true
+                },
+                {
+                    "id": "d2",
+                    "content": "    cout << add(10, 5);\n    break;",
+                    "is_distractor": true
+                }
+            ],
+            "solution_order": [
+                "c1",
+                "c2",
+                "c3",
+                "c4"
+            ]
+        },
+        {
+            "id": "cpp_03",
+            "language": "C++",
+            "difficulty": "Easy",
+            "task": "Implement a switch-case logic to handle a 'choice' variable.",
+            "allowed_moves": 7,
+            "code_chunks": [
+                {
+                    "id": "c1",
+                    "content": "int main() {\n    int choice = 2;\n    switch(choice) {",
+                    "is_distractor": false
+                },
+                {
+                    "id": "c2",
+                    "content": "        case 1:\n            cout << \"Option 1\" << endl;\n            break;",
+                    "is_distractor": false
+                },
+                {
+                    "id": "c3",
+                    "content": "        case 2:\n            cout << \"Option 2\" << endl;\n            break;",
+                    "is_distractor": false
+                },
+                {
+                    "id": "c4",
+                    "content": "        default:\n            cout << \"Invalid\" << endl;\n    }",
+                    "is_distractor": false
+                },
+                {
+                    "id": "c5",
+                    "content": "    return 0;\n}",
+                    "is_distractor": false
+                },
+                {
+                    "id": "d1",
+                    "content": "    if choice == 1:\n        print(\"Option 1\")",
+                    "is_distractor": true
+                },
+                {
+                    "id": "d2",
+                    "content": "        case 3: continue;\n        select(choice)",
+                    "is_distractor": true
+                }
+            ],
+            "solution_order": [
+                "c1",
+                "c2",
+                "c3",
+                "c4",
+                "c5"
+            ]
+        },
+        {
+            "id": "cpp_04",
+            "language": "C++",
+            "difficulty": "Easy",
+            "task": "Use a 'for' loop to print numbers from 1 to 5.",
+            "allowed_moves": 5,
+            "code_chunks": [
+                {
+                    "id": "c1",
+                    "content": "int main() {\n    for(int i = 1; i <= 5; i++) {",
+                    "is_distractor": false
+                },
+                {
+                    "id": "c2",
+                    "content": "        cout << \"Number: \" << i << endl;\n    }\n    return 0;",
+                    "is_distractor": false
+                },
+                {
+                    "id": "c3",
+                    "content": "}",
+                    "is_distractor": false
+                },
+                {
+                    "id": "d1",
+                    "content": "    for i in range(1, 6):\n        print(i)",
+                    "is_distractor": true
+                },
+                {
+                    "id": "d2",
+                    "content": "    while (i <= 5) {\n        i++;",
+                    "is_distractor": true
+                }
+            ],
+            "solution_order": [
+                "c1",
+                "c2",
+                "c3"
+            ]
+        },
+        {
+            "id": "cpp_05",
+            "language": "C++",
+            "difficulty": "Easy",
+            "task": "Create a 'while' loop that runs as long as 'i' is less than 3.",
+            "allowed_moves": 5,
+            "code_chunks": [
+                {
+                    "id": "c1",
+                    "content": "int main() {\n    int i = 0;\n    while(i < 3) {",
+                    "is_distractor": false
+                },
+                {
+                    "id": "c2",
+                    "content": "        cout << \"Looping: \" << i << endl;\n        i++;\n    }",
+                    "is_distractor": false
+                },
+                {
+                    "id": "c3",
+                    "content": "    return 0;\n}",
+                    "is_distractor": false
+                },
+                {
+                    "id": "d1",
+                    "content": "    for(int i=0; i<3; i++)\n        cout << i;",
+                    "is_distractor": true
+                },
+                {
+                    "id": "d2",
+                    "content": "    if (i < 3) continue;\n    loop",
+                    "is_distractor": true
+                }
+            ],
+            "solution_order": [
+                "c1",
+                "c2",
+                "c3"
+            ]
+        },
+        {
+            "id": "cpp_06",
+            "language": "C++",
+            "difficulty": "Easy",
+            "task": "Simulate a Do-While loop that executes at least once and breaks when 'i' is 5.",
+            "allowed_moves": 6,
+            "code_chunks": [
+                {
+                    "id": "c1",
+                    "content": "int main() {\n    int i = 10;\n    do {",
+                    "is_distractor": false
+                },
+                {
+                    "id": "c2",
+                    "content": "        cout << \"Run once\" << endl;\n        i++;\n    } while(i < 5);",
+                    "is_distractor": false
+                },
+                {
+                    "id": "c3",
+                    "content": "    return 0;\n}",
+                    "is_distractor": false
+                },
+                {
+                    "id": "d1",
+                    "content": "    while(i < 5) {\n        cout << \"Runs\";",
+                    "is_distractor": true
+                },
+                {
+                    "id": "d2",
+                    "content": "    if(i > 5) break;\n    endwhile",
+                    "is_distractor": true
+                }
+            ],
+            "solution_order": [
+                "c1",
+                "c2",
+                "c3"
+            ]
+        },
+        {
+            "id": "cpp_07",
+            "language": "C++",
+            "difficulty": "Medium",
+            "task": "Iterate through a string array (or vector) using a standard for loop.",
+            "allowed_moves": 8,
+            "code_chunks": [
+                {
+                    "id": "c1",
+                    "content": "#include <string>\nint main() {\n    string fruits[] = {\"Apple\", \"Banana\", \"Cherry\"};",
+                    "is_distractor": false
+                },
+                {
+                    "id": "c2",
+                    "content": "    int len = 3;\n    for(int i = 0; i < len; i++) {",
+                    "is_distractor": false
+                },
+                {
+                    "id": "c3",
+                    "content": "        cout << fruits[i] << endl;\n    }\n    return 0;",
+                    "is_distractor": false
+                },
+                {
+                    "id": "c4",
+                    "content": "}",
+                    "is_distractor": false
+                },
+                {
+                    "id": "d1",
+                    "content": "    for fruit in fruits:\n        print(fruit)",
+                    "is_distractor": true
+                },
+                {
+                    "id": "d2",
+                    "content": "    while(i < fruits.length)\n        cout << i;",
+                    "is_distractor": true
+                },
+                {
+                    "id": "d3",
+                    "content": "    System.out.println(fruits);",
+                    "is_distractor": true
+                }
+            ],
+            "solution_order": [
+                "c1",
+                "c2",
+                "c3",
+                "c4"
+            ]
+        },
+        {
+            "id": "cpp_08",
+            "language": "C++",
+            "difficulty": "Medium",
+            "task": "Calculate the sum of integers in an array.",
+            "allowed_moves": 8,
+            "code_chunks": [
+                {
+                    "id": "c1",
+                    "content": "int main() {\n    int data[] = {5, 10, 15, 20};\n    int sum = 0;",
+                    "is_distractor": false
+                },
+                {
+                    "id": "c2",
+                    "content": "    for(int i = 0; i < 4; i++) {\n        sum += data[i];\n    }",
+                    "is_distractor": false
+                },
+                {
+                    "id": "c3",
+                    "content": "    cout << \"Sum: \" << sum << endl;\n    return 0;\n}",
+                    "is_distractor": false
+                },
+                {
+                    "id": "d1",
+                    "content": "    sum = data.sum();\n    cout << sum;",
+                    "is_distractor": true
+                },
+                {
+                    "id": "d2",
+                    "content": "    foreach(int i in data)\n        sum += i;",
+                    "is_distractor": true
+                },
+                {
+                    "id": "d3",
+                    "content": "    return data.length;",
+                    "is_distractor": true
+                }
+            ],
+            "solution_order": [
+                "c1",
+                "c2",
+                "c3"
+            ]
+        },
+        {
+            "id": "cpp_09",
+            "language": "C++",
+            "difficulty": "Medium",
+            "task": "Access and print a specific value from a 2D array at row 1, column 0.",
+            "allowed_moves": 8,
+            "code_chunks": [
+                {
+                    "id": "c1",
+                    "content": "int main() {\n    int matrix[2][2] = {\n        {1, 2}, {3, 4}",
+                    "is_distractor": false
+                },
+                {
+                    "id": "c2",
+                    "content": "    };\n    int row = 1, col = 0;",
+                    "is_distractor": false
+                },
+                {
+                    "id": "c3",
+                    "content": "    cout << \"Value: \" << matrix[row][col] << endl;\n    return 0;",
+                    "is_distractor": false
+                },
+                {
+                    "id": "c4",
+                    "content": "}",
+                    "is_distractor": false
+                },
+                {
+                    "id": "d1",
+                    "content": "    print(matrix[col][row]);",
+                    "is_distractor": true
+                },
+                {
+                    "id": "d2",
+                    "content": "    for(int i : matrix)\n        cout << i;",
+                    "is_distractor": true
+                },
+                {
+                    "id": "d3",
+                    "content": "    matrix = {1, 2, 3, 4};",
+                    "is_distractor": true
+                }
+            ],
+            "solution_order": [
+                "c1",
+                "c2",
+                "c3",
+                "c4"
+            ]
+        },
+        {
+            "id": "cpp_10",
+            "language": "C++",
+            "difficulty": "Medium",
+            "task": "Use nested loops to print all elements of a 2x3 grid.",
+            "allowed_moves": 9,
+            "code_chunks": [
+                {
+                    "id": "c1",
+                    "content": "int main() {\n    int grid[2][3] = {{1, 2, 3}, {4, 5, 6}};\n    for(int i = 0; i < 2; i++) {",
+                    "is_distractor": false
+                },
+                {
+                    "id": "c2",
+                    "content": "        for(int j = 0; j < 3; j++) {\n            cout << grid[i][j] << \" \";\n        }",
+                    "is_distractor": false
+                },
+                {
+                    "id": "c3",
+                    "content": "        cout << endl;\n    }\n    return 0;",
+                    "is_distractor": false
+                },
+                {
+                    "id": "c4",
+                    "content": "}",
+                    "is_distractor": false
+                },
+                {
+                    "id": "d1",
+                    "content": "    for(int i=0; i<3; i++)\n        for(int j=0; j<2; j++)",
+                    "is_distractor": true
+                },
+                {
+                    "id": "d2",
+                    "content": "            cout << grid[j][i];",
+                    "is_distractor": true
+                },
+                {
+                    "id": "d3",
+                    "content": "    print(grid.all());",
+                    "is_distractor": true
+                }
+            ],
+            "solution_order": [
+                "c1",
+                "c2",
+                "c3",
+                "c4"
+            ]
+        },
+        {
+            "id": "cpp_11",
+            "language": "C++",
+            "difficulty": "Medium",
+            "task": "Perform matrix addition of two 2x2 matrices A and B into C.",
+            "allowed_moves": 10,
+            "code_chunks": [
+                {
+                    "id": "c1",
+                    "content": "int main() {\n    int A[2][2] = {{1, 1}, {1, 1}};\n    int B[2][2] = {{2, 2}, {2, 2}};",
+                    "is_distractor": false
+                },
+                {
+                    "id": "c2",
+                    "content": "    int C[2][2];\n    for(int i = 0; i < 2; i++) {",
+                    "is_distractor": false
+                },
+                {
+                    "id": "c3",
+                    "content": "        for(int j = 0; j < 2; j++) {\n            C[i][j] = A[i][j] + B[i][j];\n            cout << C[i][j] << \" \";",
+                    "is_distractor": false
+                },
+                {
+                    "id": "c4",
+                    "content": "        }\n        cout << endl;\n    }\n}",
+                    "is_distractor": false
+                },
+                {
+                    "id": "d1",
+                    "content": "            C[j][i] = A[i] + B[j];",
+                    "is_distractor": true
+                },
+                {
+                    "id": "d2",
+                    "content": "    C = A + B;",
+                    "is_distractor": true
+                },
+                {
+                    "id": "d3",
+                    "content": "    cout << A + B;",
+                    "is_distractor": true
+                }
+            ],
+            "solution_order": [
+                "c1",
+                "c2",
+                "c3",
+                "c4"
+            ]
+        },
+        {
+            "id": "cpp_12",
+            "language": "C++",
+            "difficulty": "Hard",
+            "task": "Define a 'Car' class with a 'honk' method and a brand attribute.",
+            "allowed_moves": 15,
+            "code_chunks": [
+                {
+                    "id": "c1",
+                    "content": "class Car {\n  public:\n    string brand;",
+                    "is_distractor": false
+                },
+                {
+                    "id": "c2",
+                    "content": "    void honk() {\n        cout << \"Beep Beep!\" << endl;\n    }\n};",
+                    "is_distractor": false
+                },
+                {
+                    "id": "c3",
+                    "content": "int main() {\n    Car myCar;\n    myCar.brand = \"Ford\";",
+                    "is_distractor": false
+                },
+                {
+                    "id": "c4",
+                    "content": "    cout << myCar.brand << endl;\n    myCar.honk();\n    return 0;",
+                    "is_distractor": false
+                },
+                {
+                    "id": "c5",
+                    "content": "}",
+                    "is_distractor": false
+                },
+                {
+                    "id": "d1",
+                    "content": "class Car:\n    def honk():",
+                    "is_distractor": true
+                },
+                {
+                    "id": "d2",
+                    "content": "    void main() {\n        System.out.println(\"Beep\")",
+                    "is_distractor": true
+                },
+                {
+                    "id": "d3",
+                    "content": "    Car myCar = new Car();\n    myCar->honk();",
+                    "is_distractor": true
+                },
+                {
+                    "id": "d4",
+                    "content": "    private string brand;\n    return null;",
+                    "is_distractor": true
+                },
+                {
+                    "id": "d5",
+                    "content": "    honk(myCar);",
+                    "is_distractor": true
+                }
+            ],
+            "solution_order": [
+                "c1",
+                "c2",
+                "c3",
+                "c4",
+                "c5"
+            ]
+        },
+        {
+            "id": "cpp_13",
+            "language": "C++",
+            "difficulty": "Hard",
+            "task": "Implement a class 'Account' with a private balance and public setter/getter.",
+            "allowed_moves": 16,
+            "code_chunks": [
+                {
+                    "id": "c1",
+                    "content": "class Account {\n  private:\n    int balance;",
+                    "is_distractor": false
+                },
+                {
+                    "id": "c2",
+                    "content": "  public:\n    void setBalance(int amount) {\n        if (amount >= 0) balance = amount;",
+                    "is_distractor": false
+                },
+                {
+                    "id": "c3",
+                    "content": "    }\n    int getBalance() {\n        return balance;\n    }\n};",
+                    "is_distractor": false
+                },
+                {
+                    "id": "c4",
+                    "content": "int main() {\n    Account acc;\n    acc.setBalance(100);",
+                    "is_distractor": false
+                },
+                {
+                    "id": "c5",
+                    "content": "    cout << \"Balance: \" << acc.getBalance() << endl;\n    return 0;\n}",
+                    "is_distractor": false
+                },
+                {
+                    "id": "d1",
+                    "content": "    def setBalance(amount):\n        self.balance = amount",
+                    "is_distractor": true
+                },
+                {
+                    "id": "d2",
+                    "content": "    public int balance;\n    return balance;",
+                    "is_distractor": true
+                },
+                {
+                    "id": "d3",
+                    "content": "    acc.balance = 100;",
+                    "is_distractor": true
+                },
+                {
+                    "id": "d4",
+                    "content": "    self.__balance = amount;\n    else return false;",
+                    "is_distractor": true
+                },
+                {
+                    "id": "d5",
+                    "content": "    print(acc.__balance);",
+                    "is_distractor": true
+                }
+            ],
+            "solution_order": [
+                "c1",
+                "c2",
+                "c3",
+                "c4",
+                "c5"
+            ]
+        },
+        {
+            "id": "cpp_14",
+            "language": "C++",
+            "difficulty": "Hard",
+            "task": "Demonstrate inheritance where 'Dog' inherits from 'Animal'.",
+            "allowed_moves": 15,
+            "code_chunks": [
+                {
+                    "id": "c1",
+                    "content": "class Animal {\n  public:\n    void eat() { cout << \"I can eat\" << endl; }",
+                    "is_distractor": false
+                },
+                {
+                    "id": "c2",
+                    "content": "};\nclass Dog : public Animal {\n  public:\n    void bark() { cout << \"I can bark\" << endl; }",
+                    "is_distractor": false
+                },
+                {
+                    "id": "c3",
+                    "content": "};\nint main() {\n    Dog d;\n    d.eat();",
+                    "is_distractor": false
+                },
+                {
+                    "id": "c4",
+                    "content": "    d.bark();\n    return 0;\n}",
+                    "is_distractor": false
+                },
+                {
+                    "id": "d1",
+                    "content": "class Dog extends Animal {\n    void bark()",
+                    "is_distractor": true
+                },
+                {
+                    "id": "d2",
+                    "content": "    def eat():\n        super.eat()",
+                    "is_distractor": true
+                },
+                {
+                    "id": "d3",
+                    "content": "    Dog d = new Dog();",
+                    "is_distractor": true
+                },
+                {
+                    "id": "d4",
+                    "content": "class Animal(Dog):\n    pass",
+                    "is_distractor": true
+                },
+                {
+                    "id": "d5",
+                    "content": "    d.meow();",
+                    "is_distractor": true
+                }
+            ],
+            "solution_order": [
+                "c1",
+                "c2",
+                "c3",
+                "c4"
+            ]
+        },
+        {
+            "id": "cpp_15",
+            "language": "C++",
+            "difficulty": "Hard",
+            "task": "Show inheritance with a constructor initialization list.",
+            "allowed_moves": 16,
+            "code_chunks": [
+                {
+                    "id": "c1",
+                    "content": "class Person {\n  public:\n    string name;\n    Person(string n) { name = n; }",
+                    "is_distractor": false
+                },
+                {
+                    "id": "c2",
+                    "content": "};\nclass Student : public Person {\n  public:\n    int id;",
+                    "is_distractor": false
+                },
+                {
+                    "id": "c3",
+                    "content": "    Student(string n, int i) : Person(n) {\n        id = i;\n    }\n};",
+                    "is_distractor": false
+                },
+                {
+                    "id": "c4",
+                    "content": "int main() {\n    Student s(\"Alice\", 101);\n    cout << s.name << \" \" << s.id << endl;\n}",
+                    "is_distractor": false
+                },
+                {
+                    "id": "d1",
+                    "content": "    super(name);\n    this.id = student_id;",
+                    "is_distractor": true
+                },
+                {
+                    "id": "d2",
+                    "content": "class Student extends Person {\n    int id;",
+                    "is_distractor": true
+                },
+                {
+                    "id": "d3",
+                    "content": "    def __init__(self, name):\n        self.id = name",
+                    "is_distractor": true
+                },
+                {
+                    "id": "d4",
+                    "content": "    Student s = new Student(\"Alice\");",
+                    "is_distractor": true
+                },
+                {
+                    "id": "d5",
+                    "content": "    print(s.get_name());",
+                    "is_distractor": true
+                }
+            ],
+            "solution_order": [
+                "c1",
+                "c2",
+                "c3",
+                "c4"
+            ]
+        }
+    ]
+}
