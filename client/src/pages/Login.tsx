@@ -2,14 +2,16 @@ import { useState } from "react";
 import { useLocation } from "wouter";
 import { GlitchText } from "@/components/GlitchText";
 import { useGameStore } from "@/lib/store";
+import { fetchSharedState } from "@/lib/jsonbin";
 
 export default function Login() {
   const [code, setCode] = useState("");
   const [error, setError] = useState("");
+  const [checking, setChecking] = useState(false);
   const { state, dispatch } = useGameStore();
   const [, setLocation] = useLocation();
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     const trimmed = code.trim();
     if (!trimmed) return;
@@ -29,19 +31,34 @@ export default function Login() {
     }
 
     const paddedId = numericId.padStart(3, "0");
-    const player = state.players.find((p) => p.id === paddedId);
 
-    if (!player) {
+    // Fetch latest state from JSONBin to check login status
+    setChecking(true);
+    setError("");
+    const latestState = await fetchSharedState();
+    setChecking(false);
+
+    const playerData = latestState
+      ? latestState.players.find((p) => p.id === paddedId)
+      : state.players.find((p) => p.id === paddedId);
+
+    if (!playerData) {
       setError(`Player ${paddedId} not found. Contact admin.`);
       return;
     }
 
-    if (player.status === "eliminated") {
+    // Check if already logged in on another device
+    if (playerData.loggedIn) {
+      setError(`Player ${paddedId} is already logged in on another device.`);
+      return;
+    }
+
+    if (playerData.status === "eliminated") {
       setError("You have been ELIMINATED.");
       return;
     }
 
-    if (player.status === "completed") {
+    if (playerData.status === "completed") {
       setError("You have already completed the challenge.");
       return;
     }
@@ -85,6 +102,7 @@ export default function Login() {
               placeholder="ID-###"
               className="w-full bg-black/50 border-2 border-primary/30 rounded px-6 py-4 text-center text-3xl font-mono text-primary placeholder:text-primary/20 focus:outline-none focus:border-primary focus:shadow-[0_0_20px_rgba(255,0,80,0.4)] transition-all uppercase tracking-widest"
               autoFocus
+              disabled={checking}
             />
           </div>
 
@@ -96,11 +114,12 @@ export default function Login() {
 
           <button
             type="submit"
-            className="w-full group relative overflow-hidden bg-primary px-8 py-4 rounded transition-all hover:bg-red-600"
+            disabled={checking}
+            className="w-full group relative overflow-hidden bg-primary px-8 py-4 rounded transition-all hover:bg-red-600 disabled:opacity-50"
           >
             <div className="absolute inset-0 w-full h-full bg-[linear-gradient(45deg,transparent_25%,rgba(255,255,255,0.2)_50%,transparent_75%)] translate-x-[-100%] group-hover:animate-[shimmer_1s_infinite]" />
             <span className="relative font-display text-xl font-bold tracking-widest text-white uppercase">
-              Enter Arena
+              {checking ? "Verifying..." : "Enter Arena"}
             </span>
           </button>
         </form>

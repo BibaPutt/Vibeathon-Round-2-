@@ -17,6 +17,7 @@ function createDefaultPlayer(id: string): Player {
         totalDrags: 0,
         inCooldown: false,
         cooldownEnd: null,
+        loggedIn: false,
     };
 }
 
@@ -32,7 +33,7 @@ const defaultConfig: GameConfig = {
     timerDurationSec: 600, // 10 minutes
     roundActive: false,
     roundStartTime: null,
-    qualifyCount: 10, // top 10 qualify by default
+    qualifyCount: 10,
 };
 
 export const defaultStore: GameStore = {
@@ -46,13 +47,32 @@ export const defaultStore: GameStore = {
 export function gameReducer(state: GameStore, action: GameAction): GameStore {
     switch (action.type) {
         case "LOGIN_PLAYER": {
-            return { ...state, currentPlayerId: action.playerId, isAdmin: false };
+            // Mark player as logged in on the shared state + set local session
+            return {
+                ...state,
+                currentPlayerId: action.playerId,
+                isAdmin: false,
+                players: state.players.map((p) =>
+                    p.id === action.playerId ? { ...p, loggedIn: true } : p
+                ),
+            };
         }
         case "LOGIN_ADMIN": {
             return { ...state, currentPlayerId: null, isAdmin: true };
         }
         case "LOGOUT": {
-            return { ...state, currentPlayerId: null, isAdmin: false };
+            // Mark player as logged out in shared state
+            const logoutPlayerId = state.currentPlayerId;
+            return {
+                ...state,
+                currentPlayerId: null,
+                isAdmin: false,
+                players: logoutPlayerId
+                    ? state.players.map((p) =>
+                        p.id === logoutPlayerId ? { ...p, loggedIn: false } : p
+                    )
+                    : state.players,
+            };
         }
         case "ADD_PLAYER": {
             const exists = state.players.find((p) => p.id === action.id);
@@ -136,7 +156,7 @@ export function gameReducer(state: GameStore, action: GameAction): GameStore {
                             ...p,
                             inCooldown: false,
                             cooldownEnd: null,
-                            dragsRemaining: p.totalDrags, // reset drags after cooldown
+                            dragsRemaining: p.totalDrags,
                         }
                         : p
                 ),
@@ -226,35 +246,6 @@ export function gameReducer(state: GameStore, action: GameAction): GameStore {
         }
         default:
             return state;
-    }
-}
-
-// === LocalStorage Persistence ===
-const STORAGE_KEY = "vibeathon_game_store";
-
-export function loadStore(): GameStore {
-    try {
-        const saved = localStorage.getItem(STORAGE_KEY);
-        if (saved) {
-            const parsed = JSON.parse(saved) as GameStore;
-            // Merge with defaults to handle schema evolution
-            return {
-                ...defaultStore,
-                ...parsed,
-                config: { ...defaultConfig, ...parsed.config },
-            };
-        }
-    } catch {
-        // corrupted data, reset
-    }
-    return defaultStore;
-}
-
-export function saveStore(state: GameStore) {
-    try {
-        localStorage.setItem(STORAGE_KEY, JSON.stringify(state));
-    } catch {
-        // storage full or unavailable
     }
 }
 

@@ -34,8 +34,7 @@ export interface Player {
     totalDrags: number;
     inCooldown: boolean;
     cooldownEnd: number | null; // timestamp
-    // The shuffled fragment order + solution buffer are stored in Arena component state,
-    // only final results are persisted here
+    loggedIn: boolean; // true if a player is actively logged in on some device
 }
 
 // === Game Config ===
