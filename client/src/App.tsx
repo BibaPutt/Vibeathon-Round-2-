@@ -99,6 +99,26 @@ function App() {
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
+  // Poll npoint every 1 second for live updates
+  useEffect(() => {
+    const interval = setInterval(async () => {
+      const shared = await fetchSharedState();
+      if (shared) {
+        const current = stateRef.current;
+        rawDispatch({
+          type: "SET_STATE",
+          state: {
+            players: shared.players,
+            config: shared.config,
+            currentPlayerId: current.currentPlayerId,
+            isAdmin: current.isAdmin,
+          },
+        });
+      }
+    }, 1000);
+    return () => clearInterval(interval);
+  }, []);
+
   return (
     <GameContext.Provider value={{ state, dispatch }}>
       <TooltipProvider>
