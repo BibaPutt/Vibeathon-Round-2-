@@ -8,7 +8,7 @@ export default function Login() {
   const [code, setCode] = useState("");
   const [error, setError] = useState("");
   const [checking, setChecking] = useState(false);
-  const { state, dispatch } = useGameStore();
+  const { dispatch } = useGameStore();
   const [, setLocation] = useLocation();
 
   const handleSubmit = async (e: React.FormEvent) => {
@@ -23,7 +23,7 @@ export default function Login() {
       return;
     }
 
-    // Player login — expect numeric ID like "001", "01", "1", etc.
+    // Player login
     const numericId = trimmed.replace(/\D/g, "");
     if (!numericId) {
       setError("Invalid code. Enter your player number.");
@@ -32,33 +32,36 @@ export default function Login() {
 
     const paddedId = numericId.padStart(3, "0");
 
-    // Fetch latest state from JSONBin to check login status
+    // Fetch latest state from npoint to check if player is already active
     setChecking(true);
     setError("");
-    const latestState = await fetchSharedState();
+    const shared = await fetchSharedState();
     setChecking(false);
 
-    const playerData = latestState
-      ? latestState.players.find((p) => p.id === paddedId)
-      : state.players.find((p) => p.id === paddedId);
+    if (!shared) {
+      setError("Could not connect to server. Try again.");
+      return;
+    }
 
-    if (!playerData) {
+    const player = shared.players.find((p) => p.id === paddedId);
+
+    if (!player) {
       setError(`Player ${paddedId} not found. Contact admin.`);
       return;
     }
 
-    // Check if already logged in on another device
-    if (playerData.loggedIn) {
-      setError(`Player ${paddedId} is already logged in on another device.`);
+    // Block if player is already playing or selecting on another device
+    if (player.status === "playing" || player.status === "selecting") {
+      setError(`Player ${paddedId} is already in a session.`);
       return;
     }
 
-    if (playerData.status === "eliminated") {
+    if (player.status === "eliminated") {
       setError("You have been ELIMINATED.");
       return;
     }
 
-    if (playerData.status === "completed") {
+    if (player.status === "completed") {
       setError("You have already completed the challenge.");
       return;
     }
@@ -69,11 +72,9 @@ export default function Login() {
 
   return (
     <div className="min-h-screen flex flex-col items-center justify-center p-4 relative overflow-hidden">
-      {/* Background */}
       <div className="absolute inset-0 bg-black/90 z-0" />
       <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[600px] bg-primary/10 rounded-full blur-[100px] pointer-events-none" />
 
-      {/* Squid Game shapes */}
       <div className="absolute top-10 left-10 text-primary/20 text-9xl font-display select-none">○</div>
       <div className="absolute bottom-10 right-10 text-primary/20 text-9xl font-display select-none">△</div>
       <div className="absolute top-1/2 right-20 text-primary/20 text-9xl font-display select-none">□</div>

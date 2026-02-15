@@ -34,7 +34,6 @@ export interface Player {
     totalDrags: number;
     inCooldown: boolean;
     cooldownEnd: number | null; // timestamp
-    loggedIn: boolean; // true if a player is actively logged in on some device
 }
 
 // === Game Config ===

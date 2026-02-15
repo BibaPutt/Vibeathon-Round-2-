@@ -324,8 +324,8 @@ function CodeArena({ player }: { player: ReturnType<typeof useGameStore>["state"
           const p = data.problems.find((pr) => pr.id === player.assignedProblemId);
           if (p) {
             setProblem(p);
-            const savedFragments = sessionStorage.getItem(`fragments_${player.id}`);
-            const savedSolution = sessionStorage.getItem(`solution_${player.id}`);
+            const savedFragments = localStorage.getItem(`fragments_${player.id}`);
+            const savedSolution = localStorage.getItem(`solution_${player.id}`);
             if (savedFragments && savedSolution) {
               setFragments(JSON.parse(savedFragments));
               setSolution(JSON.parse(savedSolution));
@@ -369,8 +369,8 @@ function CodeArena({ player }: { player: ReturnType<typeof useGameStore>["state"
   // Persist drag state to sessionStorage so page refresh doesn't lose it
   useEffect(() => {
     if (fragments.length > 0 || solution.length > 0) {
-      sessionStorage.setItem(`fragments_${player.id}`, JSON.stringify(fragments));
-      sessionStorage.setItem(`solution_${player.id}`, JSON.stringify(solution));
+      localStorage.setItem(`fragments_${player.id}`, JSON.stringify(fragments));
+      localStorage.setItem(`solution_${player.id}`, JSON.stringify(solution));
     }
   }, [fragments, solution, player.id]);
 
