@@ -1,43 +1,66 @@
-// npoint.io API — dead simple JSON storage, no auth needed
+// JSONBin.io API wrapper
+// Shared state (players + config) lives on JSONBin; local session lives in localStorage
+
 import type { GameStore } from "./types";
 
-const NPOINT_URL = "https://api.npoint.io/8ff602c321d69974b882";
+const BIN_ID = import.meta.env.VITE_JSONBIN_BIN_ID;
+const MASTER_KEY = import.meta.env.VITE_JSONBIN_MASTER_KEY;
+const API_BASE = `https://api.jsonbin.io/v3/b/${BIN_ID}`;
 
 export interface SharedState {
     players: GameStore["players"];
     config: GameStore["config"];
 }
 
-/** Fetch latest shared state from npoint */
+/** Fetch latest shared state from JSONBin */
 export async function fetchSharedState(): Promise<SharedState | null> {
     try {
-        const res = await fetch(NPOINT_URL);
-        if (!res.ok) return null;
-        return (await res.json()) as SharedState;
+        const res = await fetch(`${API_BASE}/latest`, {
+            headers: {
+                "X-Master-Key": MASTER_KEY,
+                "X-Bin-Meta": "false",
+            },
+        });
+        if (!res.ok) {
+            console.error("JSONBin fetch failed:", res.status, res.statusText);
+            return null;
+        }
+        const data = await res.json();
+        return data as SharedState;
     } catch (err) {
-        console.error("npoint fetch error:", err);
+        console.error("JSONBin fetch error:", err);
         return null;
     }
 }
 
-/** Push shared state to npoint (full replace) */
+/** Push shared state to JSONBin (full replace) */
 export async function pushSharedState(state: SharedState): Promise<boolean> {
     try {
-        const res = await fetch(NPOINT_URL, {
-            method: "POST",
-            headers: { "Content-Type": "application/json" },
+        const res = await fetch(API_BASE, {
+            method: "PUT",
+            headers: {
+                "Content-Type": "application/json",
+                "X-Master-Key": MASTER_KEY,
+            },
             body: JSON.stringify(state),
         });
-        return res.ok;
+        if (!res.ok) {
+            console.error("JSONBin push failed:", res.status, res.statusText);
+            return false;
+        }
+        return true;
     } catch (err) {
-        console.error("npoint push error:", err);
+        console.error("JSONBin push error:", err);
         return false;
     }
 }
 
-/** Extract shared portion from GameStore */
+/** Extract the shared portion of a GameStore */
 export function toSharedState(store: GameStore): SharedState {
-    return { players: store.players, config: store.config };
+    return {
+        players: store.players,
+        config: store.config,
+    };
 }
 
 // === Local Session (localStorage) ===
@@ -50,27 +73,20 @@ interface LocalSession {
 
 export function loadLocalSession(): LocalSession {
     try {
-        const s = localStorage.getItem(SESSION_KEY);
-        if (s) return JSON.parse(s);
+        const saved = localStorage.getItem(SESSION_KEY);
+        if (saved) return JSON.parse(saved);
     } catch { /* */ }
     return { currentPlayerId: null, isAdmin: false };
 }
 
 export function saveLocalSession(session: LocalSession) {
-    try { localStorage.setItem(SESSION_KEY, JSON.stringify(session)); } catch { /* */ }
-}
-
-// === Arena arrangement persistence (localStorage per player) ===
-export function saveArrangement(playerId: string, fragmentIds: string[], solutionIds: string[]) {
     try {
-        localStorage.setItem(`arena_${playerId}`, JSON.stringify({ fragmentIds, solutionIds }));
+        localStorage.setItem(SESSION_KEY, JSON.stringify(session));
     } catch { /* */ }
 }
 
-export function loadArrangement(playerId: string): { fragmentIds: string[]; solutionIds: string[] } | null {
+export function clearLocalSession() {
     try {
-        const s = localStorage.getItem(`arena_${playerId}`);
-        if (s) return JSON.parse(s);
+        localStorage.removeItem(SESSION_KEY);
     } catch { /* */ }
-    return null;
 }

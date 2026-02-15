@@ -1,7 +1,8 @@
-// Initialize npoint with all 20 default players
-// Run: node init-npoint.mjs
+// Initialize JSONBin with all 20 default players
+// Run: node init-bin.mjs
 
-const NPOINT_URL = "https://api.npoint.io/8ff602c321d69974b882";
+const BIN_ID = "6990d154ae596e708f2b0cfd";
+const MASTER_KEY = "$2a$10$eB.huE9bnUtgIZzlOXcqu.1ZWzbJGvJb0tAoLibUbdmWdrYsXLcES";
 
 function createPlayer(id) {
     return {
@@ -18,11 +19,12 @@ function createPlayer(id) {
         totalDrags: 0,
         inCooldown: false,
         cooldownEnd: null,
+        loggedIn: false,
     };
 }
 
 const players = [];
-for (let i = 1; i <= 20; i++) {
+for (let i = 1; i <= 100; i++) {
     players.push(createPlayer(String(i).padStart(3, "0")));
 }
 
@@ -37,13 +39,16 @@ const payload = {
 };
 
 async function init() {
-    const res = await fetch(NPOINT_URL, {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
+    const res = await fetch(`https://api.jsonbin.io/v3/b/${BIN_ID}`, {
+        method: "PUT",
+        headers: {
+            "Content-Type": "application/json",
+            "X-Master-Key": MASTER_KEY,
+        },
         body: JSON.stringify(payload),
     });
     const data = await res.json();
-    console.log("npoint updated:", JSON.stringify(data, null, 2));
+    console.log("Bin updated:", JSON.stringify(data, null, 2));
 }
 
 init();

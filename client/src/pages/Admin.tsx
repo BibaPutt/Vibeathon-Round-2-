@@ -4,12 +4,12 @@ import { useGameStore } from "@/lib/store";
 import { GlitchText } from "@/components/GlitchText";
 import { StatusBadge } from "@/components/StatusBadge";
 import { cn } from "@/lib/utils";
-import { Plus, RotateCcw, Trash2, Clock, Users, ArrowLeft, Trophy, Target } from "lucide-react";
+import { RotateCcw, Trash2, Clock, ArrowLeft, Trophy, Target } from "lucide-react";
 
 export default function Admin() {
   const { state, dispatch } = useGameStore();
   const [, setLocation] = useLocation();
-  const [newUserId, setNewUserId] = useState("");
+
   const [qualifyInput, setQualifyInput] = useState(String(state.config.qualifyCount));
 
   // Auth check
@@ -33,15 +33,7 @@ export default function Admin() {
   const qualifiedPlayers = leaderboard.slice(0, qualifyCount);
   const notQualifiedPlayers = leaderboard.slice(qualifyCount);
 
-  const handleAddUser = () => {
-    const trimmed = newUserId.trim();
-    if (!trimmed) return;
-    const numericId = trimmed.replace(/\D/g, "");
-    if (!numericId) return;
-    const paddedId = numericId.padStart(3, "0");
-    dispatch({ type: "ADD_PLAYER", id: paddedId });
-    setNewUserId("");
-  };
+
 
   const handleResetPlayer = (id: string) => {
     dispatch({ type: "RESET_PLAYER", playerId: id });
@@ -158,23 +150,7 @@ export default function Admin() {
           </button>
         </div>
 
-        {/* Add User */}
-        <div className="flex items-center gap-3 bg-card border border-border rounded-lg p-4">
-          <Users className="w-5 h-5 text-muted-foreground" />
-          <input
-            type="text"
-            value={newUserId}
-            onChange={(e) => setNewUserId(e.target.value)}
-            placeholder="New user ID (e.g. 021)"
-            className="flex-1 bg-black/50 border border-border rounded px-3 py-2 font-mono text-sm text-white placeholder:text-muted-foreground focus:outline-none focus:border-primary"
-          />
-          <button
-            onClick={handleAddUser}
-            className="px-4 py-2 rounded bg-primary hover:bg-red-600 font-display text-sm font-bold text-white uppercase tracking-wider transition-all flex items-center gap-1"
-          >
-            <Plus className="w-4 h-4" /> Add
-          </button>
-        </div>
+
 
         {/* Reset Buttons */}
         <div className="flex flex-wrap gap-3">

@@ -31,20 +31,34 @@ function Router() {
   );
 }
 
-// Actions that modify shared state and need to be pushed to npoint
+// Actions that modify shared state (players/config) and need to be pushed to JSONBin
 const SHARED_ACTIONS = new Set([
-  "LOGIN_PLAYER", "LOGOUT", "ADD_PLAYER",
-  "SELECT_DIFFICULTY", "SELECT_LANGUAGE", "ASSIGN_PROBLEM",
-  "START_PLAYING", "USE_DRAG", "START_COOLDOWN", "END_COOLDOWN",
-  "COMMIT_SOLUTION", "ELIMINATE_PLAYER",
-  "RESET_PLAYER", "RESET_ALL", "RESET_EVERYTHING",
-  "EXTEND_TIME", "START_ROUND", "END_ROUND", "SET_QUALIFY_COUNT",
+  "LOGIN_PLAYER",
+  "LOGOUT",
+  "ADD_PLAYER",
+  "SELECT_DIFFICULTY",
+  "SELECT_LANGUAGE",
+  "ASSIGN_PROBLEM",
+  "START_PLAYING",
+  "USE_DRAG",
+  "START_COOLDOWN",
+  "END_COOLDOWN",
+  "COMMIT_SOLUTION",
+  "ELIMINATE_PLAYER",
+  "RESET_PLAYER",
+  "RESET_ALL",
+  "RESET_EVERYTHING",
+  "EXTEND_TIME",
+  "START_ROUND",
+  "END_ROUND",
+  "SET_QUALIFY_COUNT",
 ]);
 
-// Actions that change local session
+// Actions that change local session identity
 const SESSION_ACTIONS = new Set(["LOGIN_PLAYER", "LOGIN_ADMIN", "LOGOUT"]);
 
 function App() {
+  // Load local session for initial state
   const session = loadLocalSession();
   const initialState = {
     ...defaultStore,
@@ -56,14 +70,20 @@ function App() {
   const stateRef = useRef(state);
   stateRef.current = state;
 
-  // Wrapped dispatch: pushes shared state to npoint after mutations
+  // Track if we've done an initial fetch
+  const initialFetchDone = useRef(false);
+
+  // Wrapped dispatch: after every shared-state action, push to JSONBin
   const dispatch = useCallback(
     (action: Parameters<typeof rawDispatch>[0]) => {
       rawDispatch(action);
 
+      // We need to compute the next state to push it
+      // Since rawDispatch is async in React, we compute it manually
       const nextState = gameReducer(stateRef.current, action);
       stateRef.current = nextState;
 
+      // Save local session if it changed
       if (SESSION_ACTIONS.has(action.type)) {
         saveLocalSession({
           currentPlayerId: nextState.currentPlayerId,
@@ -71,7 +91,7 @@ function App() {
         });
       }
 
-      // Push to npoint (fire-and-forget)
+      // Push shared state to JSONBin (fire-and-forget)
       if (SHARED_ACTIONS.has(action.type)) {
         pushSharedState(toSharedState(nextState));
       }
@@ -79,7 +99,7 @@ function App() {
     []
   );
 
-  // Fetch shared state from npoint on mount
+  // Fetch shared state from JSONBin on mount
   useEffect(() => {
     async function init() {
       const shared = await fetchSharedState();
@@ -94,30 +114,52 @@ function App() {
           },
         });
       }
+      initialFetchDone.current = true;
     }
     init();
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
-  // Poll npoint every 1 second for live updates
+  // Poll JSONBin — smart intervals based on role
+  // Admin: 5s (needs live dashboard), Arena player: 10s, Login: no polling
   useEffect(() => {
-    const interval = setInterval(async () => {
-      const shared = await fetchSharedState();
-      if (shared) {
-        const current = stateRef.current;
-        rawDispatch({
-          type: "SET_STATE",
-          state: {
-            players: shared.players,
-            config: shared.config,
-            currentPlayerId: current.currentPlayerId,
-            isAdmin: current.isAdmin,
-          },
-        });
-      }
-    }, 1000);
-    return () => clearInterval(interval);
-  }, []);
+    const getInterval = () => {
+      const current = stateRef.current;
+      if (current.isAdmin) return 5000;        // Admin needs live updates
+      if (current.currentPlayerId) return 10000; // Player in arena, less frequent
+      return 0;                                 // Login page — no polling
+    };
+
+    let intervalId: ReturnType<typeof setInterval> | null = null;
+
+    const startPolling = () => {
+      if (intervalId) clearInterval(intervalId);
+      const ms = getInterval();
+      if (ms === 0) return; // No polling needed
+
+      intervalId = setInterval(async () => {
+        if (!initialFetchDone.current) return;
+        const shared = await fetchSharedState();
+        if (shared) {
+          const current = stateRef.current;
+          rawDispatch({
+            type: "SET_STATE",
+            state: {
+              players: shared.players,
+              config: shared.config,
+              currentPlayerId: current.currentPlayerId,
+              isAdmin: current.isAdmin,
+            },
+          });
+        }
+      }, ms);
+    };
+
+    startPolling();
+    return () => {
+      if (intervalId) clearInterval(intervalId);
+    };
+  }, [state.isAdmin, state.currentPlayerId]);
 
   return (
     <GameContext.Provider value={{ state, dispatch }}>

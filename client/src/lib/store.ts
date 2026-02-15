@@ -17,19 +17,20 @@ function createDefaultPlayer(id: string): Player {
         totalDrags: 0,
         inCooldown: false,
         cooldownEnd: null,
+        loggedIn: false,
     };
 }
 
 function createDefaultPlayers(): Player[] {
     const players: Player[] = [];
-    for (let i = 1; i <= 20; i++) {
+    for (let i = 1; i <= 100; i++) {
         players.push(createDefaultPlayer(String(i).padStart(3, "0")));
     }
     return players;
 }
 
 const defaultConfig: GameConfig = {
-    timerDurationSec: 600,
+    timerDurationSec: 600, // 10 minutes
     roundActive: false,
     roundStartTime: null,
     qualifyCount: 10,
@@ -46,13 +47,32 @@ export const defaultStore: GameStore = {
 export function gameReducer(state: GameStore, action: GameAction): GameStore {
     switch (action.type) {
         case "LOGIN_PLAYER": {
-            return { ...state, currentPlayerId: action.playerId, isAdmin: false };
+            // Mark player as logged in on the shared state + set local session
+            return {
+                ...state,
+                currentPlayerId: action.playerId,
+                isAdmin: false,
+                players: state.players.map((p) =>
+                    p.id === action.playerId ? { ...p, loggedIn: true } : p
+                ),
+            };
         }
         case "LOGIN_ADMIN": {
             return { ...state, currentPlayerId: null, isAdmin: true };
         }
         case "LOGOUT": {
-            return { ...state, currentPlayerId: null, isAdmin: false };
+            // Mark player as logged out in shared state
+            const logoutPlayerId = state.currentPlayerId;
+            return {
+                ...state,
+                currentPlayerId: null,
+                isAdmin: false,
+                players: logoutPlayerId
+                    ? state.players.map((p) =>
+                        p.id === logoutPlayerId ? { ...p, loggedIn: false } : p
+                    )
+                    : state.players,
+            };
         }
         case "ADD_PLAYER": {
             const exists = state.players.find((p) => p.id === action.id);
